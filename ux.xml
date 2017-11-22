@@ -1,0 +1,97 @@
+﻿<?xml version="1.0"?>
+<playlist image="unacept.jpg">
+	<item>
+		<filename>A.flv</filename>
+		<artist>Mardukson</artist>
+		<title>1Album---"UNACEPTABLE"</title>
+		<link>foo=bar&foo2=bar2</link>
+
+		<image>a4.jpg</image>
+	</item>
+	<item>
+		<filename>anna.flv</filename>
+		<artist>Mardukson</artist>
+		<title>2Song---In Inanna</title>
+
+		<image>in.jpg</image>
+	</item>
+	<item>
+		<filename>has2give.flv</filename>
+		<artist>Mardukson</artist>
+		<title>3Song---Has2give</title>
+		<link>foo=bar&foo2=bar2</link>
+		<image>has2give.jpg</image>
+	</item>
+	<item>
+		<filename>communist.flv</filename>
+		<artist>Mardukson</artist>
+		<title>4Song---Communist</title>
+		<link><data1> data one value</data1></link>
+		<image>com.jpg</image>
+	</item>
+	<item>
+		<filename>Orion.flv</filename>
+		<artist>Mardukson</artist>
+		<title>5Song---Orion</title>
+		<link>foo=bar&foo2=bar2</link>
+		<image>orion.jpg</image>
+	</item>
+	<item>
+		<filename>prayn2.flv</filename>
+		<artist>Mardukson</artist>
+		<title>6Song---Prayn2</title>
+		<link><data1> data one value</data1></link>
+		<image>pr.jpg</image>
+	</item>
+	<item>
+		<filename>unaceptable.flv</filename>
+		<artist>Mardukson</artist>
+		<title>7Song---Unceptable</title>
+		<link>foo=bar&foo2=bar2</link>
+		<image>un.jpg</image>
+	</item>
+	<item>
+		<filename>who.flv</filename>
+		<artist>Mardukson</artist>
+		<title>8Song---Who's my Brother</title>
+		<link><data1> data one value</data1></link>
+		<image>broth.jpg</image>
+	</item>
+	<item>
+		<filename>meri.flv</filename>
+		<artist>Mardukson</artist>
+		<title>9Song---Meri-----------------------------this song free</title>
+		<link>meri.mp3</link>
+		<image>meri.jpg</image>
+
+	</item>
+	<item>
+		<filename>free.flv</filename>
+		<artist>Mardukson</artist>
+		<title>aSong---Prisoner</title>
+		<link><data1> data one value</data1></link>
+		<image>free.jpg</image>
+	</item>
+	<item>
+		<filename>2myluv.flv</filename>
+		<artist>Mardukson</artist>
+		<title>bSong---2myluv</title>
+		<link>foo=bar&foo2=bar2</link>
+		<image>2myluv.jpg</image>
+	</item>
+	<item>
+		<filename>dfu.flv</filename>
+		<artist>Mardukson</artist>
+		<title>Song---Da fuck u</title>
+		<link><data1> data one value</data1></link>
+		<image>dfu.jpg</image>
+	</item>
+        <item>
+		<filename>wib.flv</filename>
+		<artist>Mardukson</artist>
+		<title>Song---would it be</title>
+		<link><data1> data one value</data1></link>
+		<image>wib.jpg</image>
+	</item>
+</playlist>
+
