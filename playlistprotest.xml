@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+<playlist image="pro.jpg">
+	<item>
+		<filename>lotw.flv</filename>
+		<artist>Mardukson</artist>
+		<title>1song---Lightoftheworld</title>
+		<link>foo=bar&foo2=bar2</link>
+                <image>lotw.jpg</image>
+	</item>
+	<item>
+		<filename>lw2n.flv</filename>
+		<artist>Mardukson</artist>
+		<title>2Song---Longway2nowhere</title>
+		<link><data1> data one value</data1></link>
+
+		<image>lw2n.jpg</image>
+	</item>
+	<item>
+		<filename>1tp.flv</filename>
+		<artist>Mardukson</artist>
+		<title>3Song---1trikpony</title>
+		<link>foo=bar&foo2=bar2</link>
+		<image>1tp.jpg</image>
+	</item>
+	<item>
+		<filename>ds.flv</filename>
+		<artist>Mardukson</artist>
+		<title>4Song---Don't show</title>
+		<link><data1> data one value</data1></link>
+		<image>ds.jpg</image>
+	</item>
+	<item>
+		<filename>n2s.flv</filename>
+		<artist>Mardukson</artist>
+		<title>5Song---Nothing2say</title>
+		<link>foo=bar&foo2=bar2</link>
+		<image>n2s.jpg</image>
+	</item>
+	<item>
+		<filename>tr.flv</filename>
+		<artist>Mardukson</artist>
+		<title>6Song---Reason</title>
+		<link><data1> data one value</data1></link>
+		<image>dr.jpg</image>
+	</item>
+	<item>
+		<filename>syh.flv</filename>
+		<artist>Mardukson</artist>
+		<title>7Song---Show your hand</title>
+		<link>foo=bar&foo2=bar2</link>
+		<image>syh.jpg</image>
+	</item>
+	<item>
+		<filename>og.flv</filename>
+		<artist>Mardukson</artist>
+		<title>8Song---Other guyz</title>
+		<link><data1> data one value</data1></link>
+		<image>og.jpg</image>
+	</item>
+	<item>
+		<filename>dt.flv</filename>
+		<artist>Mardukson</artist>
+		<title>9Song---Down there</title>
+		<link>meri.mp3</link>
+		<image>dt.jpg</image>
+
+	</item>
+	<item>
+		<filename>wcgo.flv</filename>
+		<artist>Mardukson</artist>
+		<title>aSong---We can't go on</title>
+		<link><data1> data one value</data1></link>
+		<image>wcgo.jpg</image>
+	</item>
+	<item>
+		<filename>ar.flv</filename>
+		<artist>Mardukson</artist>
+		<title>bSong---A romeo</title>
+		<link>foo=bar&foo2=bar2</link>
+		<image>ar.jpg</image>
+	</item>
+	<item>
+		<filename>v.flv</filename>
+		<artist>Mardukson</artist>
+		<title>Song---Vision</title>
+		<link><data1> data one value</data1></link>
+		<image>v.jpg</image>
+	</item>
+        <item>
+		<filename>fs.flv</filename>
+		<artist>Mardukson</artist>
+		<title>Song---Feifongssong</title>
+		<link><data1> data one value</data1></link>
+		<image>fs.jpg</image>
+	</item>
+        <item>
+		<filename>a2d.flv</filename>
+		<artist>Mardukson</artist>
+		<title>bSong---Abou2die</title>
+		<link>foo=bar&foo2=bar2</link>
+		<image>a2d.jpg</image>
+	</item>
+	<item>
+		<filename>promo.flv</filename>
+		<artist>Mardukson</artist>
+		<title>Song---Promo</title>
+		<link><data1> data one value</data1></link>
+		<image>promo.jpg</image>
+	</item>
+        <item>
+		<filename>.flv</filename>
+		<artist>Mardukson</artist>
+		<title>Song---Feifongssong</title>
+		<link><data1> data one value</data1></link>
+		<image>fs.jpg</image>
+	</item>
+</playlist>
+

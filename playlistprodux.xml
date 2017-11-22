@@ -1,0 +1,61 @@
+﻿<?xml version="1.0"?>
+<playlist image="PRODUCTS.jpg">
+	<item>
+		<filename>A.jpg</filename>
+		<artist>Mardukson</artist>
+		<title>ALBUM---UNACEPTABLE</title>
+		<link>foo=bar&foo2=bar2</link>
+
+		<image>una.jpg</image>
+	</item>
+	<item>
+		<filename>anna.jpg</filename>
+		<artist>Mardukson</artist>
+		<title>ALBUM---HATZ OF MAR</title>
+
+		<image>in.jpg</image>
+	</item>
+	<item>
+		<filename>has2give.jpg</filename>
+		<artist>Mardukson</artist>
+		<title>ALBUM---NEW GENESIS</title>
+		<link>foo=bar&foo2=bar2</link>
+		<image>has2give.jpg</image>
+	</item>
+	<item>
+		<filename>communist.jpg</filename>
+		<artist>Mardukson</artist>
+		<title>ALBUM---I PROTEST</title>
+		<link><data1> data one value</data1></link>
+		<image>com.jpg</image>
+	</item>
+	<item>
+		<filename>Orion.jpg</filename>
+		<artist>Mardukson</artist>
+		<title>ALBUM---RHYME2WEEP</title>
+		<link>foo=bar&foo2=bar2</link>
+		<image>orion.jpg</image>
+	</item>
+	<item>
+		<filename>prayn2.jpg</filename>
+		<artist>Mardukson</artist>
+		<title>NOVEL---HOUSE OF CUSH</title>
+		<link><data1> data one value</data1></link>
+		<image>pr.jpg</image>
+	</item>
+	<item>
+		<filename>unaceptable.jpg</filename>
+		<artist>Mardukson</artist>
+		<title>NOVEL---NIMROD:LOST SON OF SUMERIA</title>
+		<link>foo=bar&foo2=bar2</link>
+		<image>un.jpg</image>
+	</item>
+	<item>
+		<filename>who.jpg</filename>
+		<artist>Mardukson</artist>
+		<title>NOVEL---NEW GENESIS</title>
+		<link><data1> data one value</data1></link>
+		<image>broth.jpg</image>
+	</item>
+	</playlist>
+

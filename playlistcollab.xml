@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<playlist image="collab.jpg">
+	<item>
+		<filename>sentimental.flv</filename>
+		<artist>Mardukson</artist>
+		<title>1song---Sentimental</title>
+		<link>foo=bar&foo2=bar2</link>
+                <image>collab.jpg</image>
+	</item>
+	<item>
+		<filename>howdoesitfeel.flv</filename>
+		<artist>Mardukson</artist>
+		<title>2Song---How does it feel</title>
+		<link><data1> data one value</data1></link>
+
+		<image>collab.jpg</image>
+	</item>
+	<item>
+		<filename>gonewiththeman.flv</filename>
+		<artist>Mardukson</artist>
+		<title>3Song---Gone with the man</title>
+		<link>foo=bar&foo2=bar2</link>
+		<image>collab.jpg</image>
+	</item>
+	<item>
+		<filename>hero.flv</filename>
+		<artist>Mardukson</artist>
+		<title>4Song---Hero</title>
+		<link><data1> data one value</data1></link>
+		<image>collab.jpg</image>
+	</item>
+	<item>
+		<filename>breakingnews.flv</filename>
+		<artist>Mardukson</artist>
+		<title>5Song---Breaknnews</title>
+		<link>foo=bar&foo2=bar2</link>
+		<image>collab.jpg</image>
+	</item>
+	<item>
+		<filename>water.flv</filename>
+		<artist>Mardukson</artist>
+		<title>6Song---Water</title>
+		<link><data1> data one value</data1></link>
+		<image>collab.jpg</image>
+	</item>
+	<item>
+		<filename>whereyouare.flv</filename>
+		<artist>Mardukson</artist>
+		<title>7Song---Whereever you are</title>
+		<link>foo=bar&foo2=bar2</link>
+		<image>collab.jpg</image>
+	</item>
+	
+        
+</playlist>
+

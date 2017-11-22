@@ -1,0 +1,125 @@
+<?xml version="1.0"?>
+<playlist image="r2w.jpg">
+          <item>
+		<filename>.flv</filename>
+		<artist>Mardukson</artist>
+		<title>1ALBUM---RHYME2WEEP</title>
+		<link>foo=bar&foo2=bar2</link>
+                <image>r2w.jpg</image>
+	</item>
+	<item>
+		<filename>intro.flv</filename>
+		<artist>Mardukson</artist>
+		<title>1song---Intro</title>
+		<link>foo=bar&foo2=bar2</link>
+                <image>intro.jpg</image>
+	</item>
+	<item>
+		<filename>buo.flv</filename>
+		<artist>Mardukson</artist>
+		<title>2Song---Benduova</title>
+		<link><data1> data one value</data1></link>
+
+		<image>buo.jpg</image>
+	</item>
+	<item>
+		<filename>cr.flv</filename>
+		<artist>Mardukson</artist>
+		<title>3Song---Chasingrainbows</title>
+		<link>foo=bar&foo2=bar2</link>
+		<image>cr.jpg</image>
+	</item>
+	<item>
+		<filename>bu.flv</filename>
+		<artist>Mardukson</artist>
+		<title>4Song---Bless you</title>
+		<link><data1> data one value</data1></link>
+		<image>bu.jpg</image>
+	</item>
+	<item>
+		<filename>rwn.flv</filename>
+		<artist>Mardukson</artist>
+		<title>5Song---RollwithNimrod</title>
+		<link>foo=bar&foo2=bar2</link>
+		<image>rwn.jpg</image>
+	</item>
+	<item>
+		<filename>lm.flv</filename>
+		<artist>Mardukson</artist>
+		<title>6Song---Like mind</title>
+		<link><data1> data one value</data1></link>
+		<image>lm.jpg</image>
+	</item>
+	<item>
+		<filename>r2w.flv</filename>
+		<artist>Mardukson</artist>
+		<title>7Song---Rhyme2weep</title>
+		<link>foo=bar&foo2=bar2</link>
+		<image>r2w.jpg</image>
+	</item>
+	<item>
+		<filename>small.flv</filename>
+		<artist>Mardukson</artist>
+		<title>8Song---Too small</title>
+		<link><data1> data one value</data1></link>
+		<image>ts.jpg</image>
+	</item>
+	<item>
+		<filename>s2u.flv</filename>
+		<artist>Mardukson</artist>
+		<title>9Song---Say 2 you</title>
+		<link>meri.mp3</link>
+		<image>s2u.jpg</image>
+
+	</item>
+	<item>
+		<filename>dc.flv</filename>
+		<artist>Mardukson</artist>
+		<title>aSong---Dey come</title>
+		<link><data1> data one value</data1></link>
+		<image>dco.jpg</image>
+	</item>
+	<item>
+		<filename>os.flv</filename>
+		<artist>Mardukson</artist>
+		<title>bSong---Old Skool</title>
+		<link>foo=bar&foo2=bar2</link>
+		<image>os.jpg</image>
+	</item>
+	<item>
+		<filename>wlt.flv</filename>
+		<artist>Mardukson</artist>
+		<title>Song---War(likethat)</title>
+		<link><data1> data one value</data1></link>
+		<image>wlt.jpg</image>
+	</item>
+        <item>
+		<filename>tob.flv</filename>
+		<artist>Mardukson</artist>
+		<title>Song---Towerofbabel</title>
+		<link><data1> data one value</data1></link>
+		<image>tob.jpg</image>
+	</item>
+        <item>
+		<filename>zw.flv</filename>
+		<artist>Mardukson</artist>
+		<title>bSong---Zimbabwe way</title>
+		<link>foo=bar&foo2=bar2</link>
+		<image>zw.jpg</image>
+	</item>
+	<item>
+		<filename>dat.flv</filename>
+		<artist>Mardukson</artist>
+		<title>Song---Danceagainsttorture</title>
+		<link><data1> data one value</data1></link>
+		<image>dat.jpg</image>
+	</item>
+        <item>
+		<filename>c2gu.flv</filename>
+		<artist>Mardukson</artist>
+		<title>Song---Coming2getya</title>
+		<link><data1> data one value</data1></link>
+		<image>c2gy.jpg</image>
+	</item>
+</playlist>
+

@@ -1,0 +1,29 @@
+<playlist image="playlist2.jpg">
+	<item>
+		<filename>Example MP3.mp3</filename>
+		<artist>Bob</artist>
+		<title>Example MP3</title>
+		<description>Description for Example 1</description>
+		<seconds></seconds>
+		<image>Example MP3.jpg</image>
+		<link>http://www.wimpyplayer.com</link>
+	</item>
+	<item>
+		<filename>Example SWF.swf</filename>
+		<artist>Sally</artist>
+		<title>Example SWF</title>
+		<description>Description for Example 2</description>
+		<seconds></seconds>
+		<image>Example SWF.jpg</image>
+		<link>http://www.plaino.com</link>
+	</item>
+	<item>
+		<filename>example3.flv</filename>
+		<artist>Tom</artist>
+		<title>Example 3 - FLV</title>
+		<description>Description for Example 3</description>
+		<seconds></seconds>
+		<image>example3.jpg</image>
+		<link>http://www.gieson.com</link>
+	</item>
+</playlist>

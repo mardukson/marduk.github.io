@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<playlist image="ng.jpg">
+	<item>
+		<filename>cgu.flv</filename>
+		<artist>Mardukson</artist>
+		<title>1song---"Chumpgetup"</title>
+		<link>foo=bar&foo2=bar2</link>
+
+		<image>cgu.jpg</image>
+	</item>
+	<item>
+		<filename>dlb.flv</filename>
+		<artist>Mardukson</artist>
+		<title>2Song---Don'tlookback</title>
+		<link><data1> data one value</data1></link>
+
+		<image>dlb.jpg</image>
+	</item>
+	<item>
+		<filename>lam.flv</filename>
+		<artist>Mardukson</artist>
+		<title>3Song---Lookatme</title>
+		<link>foo=bar&foo2=bar2</link>
+		<image>lam.jpg</image>
+	</item>
+	<item>
+		<filename>bc.flv</filename>
+		<artist>Mardukson</artist>
+		<title>4Song---Big Cat</title>
+		<link><data1> data one value</data1></link>
+		<image>bc.jpg</image>
+	</item>
+	<item>
+		<filename>lyb.flv</filename>
+		<artist>Mardukson</artist>
+		<title>5Song---Like you baby</title>
+		<link>foo=bar&foo2=bar2</link>
+		<image>lub.jpg</image>
+	</item>
+	<item>
+		<filename>2h.flv</filename>
+		<artist>Mardukson</artist>
+		<title>6Song---Too hot</title>
+		<link><data1> data one value</data1></link>
+		<image>th.jpg</image>
+	</item>
+	<item>
+		<filename>imf.flv</filename>
+		<artist>Mardukson</artist>
+		<title>7Song---Icemanfriend</title>
+		<link>foo=bar&foo2=bar2</link>
+		<image>imf.jpg</image>
+	</item>
+	<item>
+		<filename>hni.flv</filename>
+		<artist>Mardukson</artist>
+		<title>8Song---Hernameis</title>
+		<link><data1> data one value</data1></link>
+		<image>hni.jpg</image>
+	</item>
+	<item>
+		<filename>ff.flv</filename>
+		<artist>Mardukson</artist>
+		<title>9Song---Freedomfighter</title>
+		<link>meri.mp3</link>
+		<image>ff.jpg</image>
+
+	</item>
+	<item>
+		<filename>rw.flv</filename>
+		<artist>Mardukson</artist>
+		<title>aSong---Rootzwoman</title>
+		<link><data1> data one value</data1></link>
+		<image>rw.jpg</image>
+	</item>
+	<item>
+		<filename>la.flv</filename>
+		<artist>Mardukson</artist>
+		<title>bSong---Loving arms</title>
+		<link>foo=bar&foo2=bar2</link>
+		<image>la.jpg</image>
+	</item>
+	<item>
+		<filename>iw.flv</filename>
+		<artist>Mardukson</artist>
+		<title>Song---I wanted</title>
+		<link><data1> data one value</data1></link>
+		<image>iw.jpg</image>
+	</item>
+        <item>
+		<filename>ffs.flv</filename>
+		<artist>Mardukson</artist>
+		<title>Song---Feifongssong</title>
+		<link><data1> data one value</data1></link>
+		<image>fs.jpg</image>
+	</item>
+        <item>
+		<filename>a2d.flv</filename>
+		<artist>Mardukson</artist>
+		<title>bSong---Abou2die</title>
+		<link>foo=bar&foo2=bar2</link>
+		<image>a2d.jpg</image>
+	</item>
+	<item>
+		<filename>promo.flv</filename>
+		<artist>Mardukson</artist>
+		<title>Song---Promo</title>
+		<link><data1> data one value</data1></link>
+		<image>promo.jpg</image>
+	</item>
+       
+</playlist>
+

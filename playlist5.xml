@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<playlist image="playlist5.jpg">
+	<item>
+		<filename>anna.flv</filename>
+		<artist>mardukson</artist>
+		<title>Roll over me to see link arrow</title>
+		<link>https://wimpy.foxycart.com/cart?name=Killeen%20and%20Gieson%20-%20Video%20Example&price=0.99</link>
+		<image>in.jpg</image>
+	</item>
+	<item>
+		<filename>Example MP3.mp3</filename>
+		<artist>Killeen%20and%20Gieson</artist>
+		<title>Click me, then click video window</title>
+		<link>https://wimpy.foxycart.com/cart?name=Killeen%20and%20Gieson%20-%20Audio%20Example&price=0.99</link>
+		<image>Example MP3.jpg</image>
+	</item>
+</playlist>

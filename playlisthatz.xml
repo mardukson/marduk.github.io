@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<playlist image="hatz.hatz.jpg">
+	<item>
+		<filename>p.flv</filename>
+		<artist>Mardukson</artist>
+		<title>1song---Problem</title>
+		<link>foo=bar&foo2=bar2</link>
+                <image>hatz.jpg</image>
+	</item>
+	<item>
+		<filename>tom.flv</filename>
+		<artist>Mardukson</artist>
+		<title>2Song---Thang on me</title>
+		<link><data1> data one value</data1></link>
+
+		<image>hatz.jpg</image>
+	</item>
+	<item>
+		<filename>igu.flv</filename>
+		<artist>Mardukson</artist>
+		<title>3Song---I get up</title>
+		<link>foo=bar&foo2=bar2</link>
+		<image>hatz.jpg</image>
+	</item>
+	<item>
+		<filename>tu.flv</filename>
+		<artist>Mardukson</artist>
+		<title>4Song---thanking you</title>
+		<link><data1> data one value</data1></link>
+		<image>hatz.jpg</image>
+	</item>
+	<item>
+		<filename>ys.flv</filename>
+		<artist>Mardukson</artist>
+		<title>5Song---Yellow Submarine</title>
+		<link>foo=bar&foo2=bar2</link>
+		<image>hatz.jpg</image>
+	</item>
+	<item>
+		<filename>mu.flv</filename>
+		<artist>Mardukson</artist>
+		<title>6Song---Make up</title>
+		<link><data1> data one value</data1></link>
+		<image>hatz.jpg</image>
+	</item>
+	<item>
+		<filename>mm.flv</filename>
+		<artist>Mardukson</artist>
+		<title>7Song---My Mouth</title>
+		<link>foo=bar&foo2=bar2</link>
+		<image>hatz.jpg</image>
+	</item>
+	<item>
+		<filename>snr2c.flv</filename>
+		<artist>Mardukson</artist>
+		<title>8Song---Season's</title>
+		<link><data1> data one value</data1></link>
+		<image>hatz.jpg</image>
+	</item>
+	<item>
+		<filename>cah.flv</filename>
+		<artist>Mardukson</artist>
+		<title>9Song---Can't accuse her</title>
+		<link>meri.mp3</link>
+		<image>hatz.jpg</image>
+
+	</item>
+	<item>
+		<filename>wam.flv</filename>
+		<artist>Mardukson</artist>
+		<title>aSong---Walkedamile</title>
+		<link><data1> data one value</data1></link>
+		<image>hatz.jpg</image>
+	</item>
+	<item>
+		<filename>ar.flv</filename>
+		<artist>Mardukson</artist>
+		<title>bSong---A romeo</title>
+		<link>foo=bar&foo2=bar2</link>
+		<image>hatz.jpg</image>
+	</item>
+	<item>
+		<filename>votf.flv</filename>
+		<artist>Mardukson</artist>
+		<title>Song---Vision</title>
+		<link><data1> data one value</data1></link>
+		<image>hatz.jpg</image>
+	</item>
+        
+</playlist>
+
