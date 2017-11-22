@@ -1,0 +1,141 @@
+<html>
+<head>
+<title>Rave JavaScript Example 9</title>
+<link href="rave_js_stylesheet.css" rel="stylesheet" type="text/css">
+
+<script language='javascript' src='rave.js'></script>
+
+
+<!-- IMPORTANT: We are using an existing "development" account set up at Foxycart.com. You should sign up with Foxycart.com and get your won development acount -->
+
+<!-- BEGIN FOXYCART FILES -->
+<script src="https://wimpy.foxycart.com/files/foxycart_includes.js" type="text/javascript" charset="utf-8"></script>
+<link rel="stylesheet" href="https://wimpy.foxycart.com/files/foxybox.css" type="text/css" media="screen" charset="utf-8" />
+<link rel="stylesheet" href="https://wimpy.foxycart.com/themes/standard/theme.foxybox.css" type="text/css" media="screen" charset="utf-8" />
+<!-- END FOXYCART FILES -->
+
+
+</head>
+
+<body>
+
+
+
+
+<p><b>Example 9 </b></p>
+<p>This example shows you how to use javascript to communicate with an ecommerce system, which utilizes the same basic setup as <a href="rave_js_example8.html">Example 8</a>. </p>
+<p>We are using the <a href="http://www.foxycart.com/" target="_blank">Foxycart ecommerce system</a>,  due to it's simple and straight forward javascript API. However, other  you should be able to integrate this kind of set up with any other  ecommerce system that has a javascript API. </p>
+<p>The differences between this and Exampel 8 are:<br>
+  - Added Foxycart code to the &lt;head&gt; area of the page<br>
+  - Using playlist5.xml, which contiains links to the FoxyCart ecommerce engine. <br>
+- Using the &quot;fc_tb_show&quot; funciton to engage the Foxycart engine. <br>
+- Using a skin that replaces the -&gt; arrow link with a graphic. </p>
+<div id="flashcontent">This DIV contents to be replaced by Rave.</div>
+
+<script language="JavaScript" >
+defaultWimpyConfigs.wimpyWidth	= "332";
+defaultWimpyConfigs.wimpyHeight	= "389";
+defaultWimpyConfigs.wimpySkin	= "skins/skin_js_examples_buy.xml";
+
+// NOTE: The following two options are set to 
+// "link" by default. We've explicitly set them 
+// to "link" here just so you're aware of them. 
+// These two behaviours only work when there is 
+// valid <link> tag data in an XML playlist item.
+defaultWimpyConfigs.clickWindowAction="link";
+defaultWimpyConfigs.infoButtonAction="link";
+
+// Setting linkToWindow to "javascript" re-directs 
+// the data contained in the <link> tag of an XML 
+// playlist item to the javascript funciton named 
+// "handleLinkClick" within rave.js 
+defaultWimpyConfigs.linkToWindow="javascript";
+
+// Set the event handler option to true so we 
+// can receive feedback from the player:
+// NOTE: This varibale resides within rave.js. 
+//       Since rave.js already loaded in the <head> 
+//       we can safely over-write it here with the new value.
+enableWimpyEvents = true;
+
+// Again, singe rave was already loaded in the <head> we can 
+// over-write the handleLinkClick function here (rather than 
+// editing rave.js)
+// This function gets pinged each time a track finnishes playing.
+function handleLinkClick(returnedObject){
+	fc_tb_show("", unescape(returnedObject), "");
+}
+
+defaultWimpyConfigs.wimpyApp = "playlist5.xml";
+
+makeWimpyPlayer();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+<p>&nbsp;</p>
+<p><b>Source Code </b></p>
+<p>In the &lt;head&gt; tag we've included the Foxycart code:</p>
+<p class="codedBox"><font color="#666666">&lt;!-- BEGIN FOXYCART FILES --&gt;</font><br>
+    <font color="#CC0000">&lt;script src=&quot;https://wimpy.foxycart.com/files/foxycart_includes.js&quot; type=&quot;text/javascript&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;<br>
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;https://wimpy.foxycart.com/files/foxybox.css&quot; type=&quot;text/css&quot; media=&quot;screen&quot; charset=&quot;utf-8&quot; /&gt;<br>
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;https://wimpy.foxycart.com/themes/standard/theme.foxybox.css&quot; type=&quot;text/css&quot; media=&quot;screen&quot; charset=&quot;utf-8&quot; /&gt;</font><br>
+  <font color="#666666">&lt;!-- END FOXYCART FILES --&gt;</font></p>
+<p><font color="#666666">And in our &lt;body&gt; we've included the code to setup and render the player:</font></p>
+<p class="codedBox">&lt;script language='javascript' src='rave.js'&gt;&lt;/script&gt;<br>  
+  <font color="#000000">&lt;div id=&quot;flashcontent&quot;&gt;This DIV contents to be replaced by Rave.&lt;/div&gt;</font><br>
+&lt;script language=&quot;JavaScript&quot; &gt;<br>
+<br>
+<font color="#666666">// 
+NOTE: See actual source code ofthis page for detailed comments. </font><br>
+  <br>
+  <font color="#666666">// Set config options:</font><br>
+  <font color="#CC0000">defaultWimpyConfigs.wimpyWidth	=   &quot;332&quot;;<br>
+  defaultWimpyConfigs.wimpyHeight	= &quot;389&quot;;<br>
+  defaultWimpyConfigs.wimpySkin	= &quot;skins/<font color="#339900">skin_js_examples_buy.xml</font>&quot;;</font><br>
+  <br>
+  <font color="#666666">// Set the behaviour to &quot;link&quot;: </font><br>
+<font color="#CC0000">defaultWimpyConfigs.clickWindowAction=&quot;link&quot;;<br>
+defaultWimpyConfigs.infoButtonAction=&quot;link&quot;;</font><br>
+  <br>
+  <font color="#666666">// Wire the linkToWindow to javascript:</font><br>
+  <font color="#CC0000">defaultWimpyConfigs.linkToWindow=&quot;javascript&quot;;</font><br>
+  <br>
+  <font color="#666666">// Enable handler events:</font><br>
+  <font color="#CC0000">enableWimpyEvents = true;</font><br>
+  <br>
+  <font color="#666666">// Re-write the handler function:</font><br>
+  <font color="#CC0000">function handleLinkClick(returnedObject){<br>
+ &nbsp;&nbsp; <font color="#339900">fc_tb_show(&quot;&quot;, unescape(returnedObject), &quot;&quot;);</font><br>
+  }</font><br>
+  <br>
+  <font color="#666666">// Set the default playlist:</font><br>
+  <font color="#CC0000">defaultWimpyConfigs.wimpyApp = &quot;playlist4.xml&quot;;</font><br>
+  <br>
+  <font color="#666666">// Render the player using the default configs:</font> <br>
+  <font color="#CC0000">makeWimpyPlayer();</font><br>
+  <br>
+&lt;/script&gt;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><a href="http://www.wimpyplayer.net/docs/rave" target="_parent">Part of the Wimpy Rave documentation. </a><br>
+&copy;2009 <a href="http://www.wimpyplayer.net">Plaino</a> </p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+
+</body>
+</html>

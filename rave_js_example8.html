@@ -1,0 +1,118 @@
+<html>
+<head>
+<title>Rave JavaScript Example 8</title>
+<link href="rave_js_stylesheet.css" rel="stylesheet" type="text/css">
+
+<script language='javascript' src='rave.js'></script>
+
+</head>
+
+<body>
+
+
+
+
+<p><b>Example 8 </b></p>
+<p>In this example we are  re-directing the external &quot;Link to Page&quot; to Javascript (rather than a traditional link out to another page). If you're tricky, you'll realize that you do not have to use a URL in the &lt;link&gt; of your XML data loaded into the player. Instead, you can use data, and that data will be re-directed back to javascript.</p>
+<p>There are two options available for this feature: <a href="http://www.wimpyplayer.net/docs/rave/api/infoButtonAction.html">Info Button Action</a>, and <a href="http://www.wimpyplayer.net/docs/rave/api/infoButtonAction.html">Click Video Window Action</a>. By default, these options are set to &quot;link&quot; so, technically, you don't have to establish them, however in the source code, we've explicitly set them so you can see. These features only work when there is actual data in the &lt;link&gt; tag of an XML playlist item. </p>
+<p>To &quot;wire&quot; these options, set them to &quot;Link to Page&quot;, then set the &quot;<a href="http://www.wimpyplayer.net/docs/rave/api/linkToWindow.html">External Link-to Window</a>&quot; option to &quot;javascript&quot;. See the source code for how to set up these options manually.</p>
+<p>In the example below, start a video, then click the video window. OR roll over an item in the playlist, then click the -&gt; (arrow) to the left of the line item. You can use Skin Machine to set the -&gt; (arrow) to a graphic (e.g. JPG, or PNG image).</p>
+<p>Within rave.js, there is an event handler function named &quot;handleLinkClick&quot;, which gets pinged when &quot;linkToWindow&quot; is set to &quot;javascript&quot;. For example purposes, we've included some dummy data within the &lt;link&gt; tag of playlist4.xml. And we're using the alert() function to display the data in an alert window. </p>
+<div id="flashcontent">This DIV contents to be replaced by Rave.</div>
+
+<script language="JavaScript" >
+defaultWimpyConfigs.wimpyWidth	= "332";
+defaultWimpyConfigs.wimpyHeight	= "389";
+defaultWimpyConfigs.wimpySkin	= "skins/skin_js_examples.xml";
+
+// NOTE: The following two options are set to 
+// "link" by default. We've explicitly set them 
+// to "link" here just so you're aware of them. 
+// These two behaviours only work when there is 
+// valid <link> tag data in an XML playlist item.
+defaultWimpyConfigs.clickWindowAction="link";
+defaultWimpyConfigs.infoButtonAction="link";
+
+// Setting linkToWindow to "javascript" re-directs 
+// the data contained in the <link> tag of an XML 
+// playlist item to the javascript funciton named 
+// "handleLinkClick" within rave.js 
+defaultWimpyConfigs.linkToWindow="javascript";
+
+// Set the event handler option to true so we 
+// can receive feedback from the player:
+// NOTE: This varibale resides within rave.js. 
+//       Since rave.js already loaded in the <head> 
+//       we can safely over-write it here with the new value.
+enableWimpyEvents = true;
+
+// Again, singe rave was already loaded in the <head> we can 
+// over-write the handleLinkClick function here (rather than 
+// editing rave.js)
+// This function gets pinged each time a track finnishes playing.
+function handleLinkClick(returnedObject){
+	alert(returnedObject);
+}
+
+defaultWimpyConfigs.wimpyApp = "playlist4.xml";
+
+makeWimpyPlayer();
+</script>
+
+
+
+
+
+
+
+
+<p>&nbsp;</p>
+<p><b>Source Code </b></p>
+<p class="codedBox">&lt;script language='javascript' src='rave.js'&gt;&lt;/script&gt;<br>  
+  <font color="#000000">&lt;div id=&quot;flashcontent&quot;&gt;This DIV contents to be replaced by Rave.&lt;/div&gt;</font><br>
+&lt;script language=&quot;JavaScript&quot; &gt;<br>
+<br>
+<font color="#666666">// 
+NOTE: See actual source code of this page for detailed comments. </font><br>
+  <br>
+  <font color="#666666">// Set config options:</font><br>
+  <font color="#CC0000">defaultWimpyConfigs.wimpyWidth	=   &quot;332&quot;;<br>
+  defaultWimpyConfigs.wimpyHeight	= &quot;389&quot;;<br>
+  defaultWimpyConfigs.wimpySkin	= &quot;skins/skin_js_examples.xml&quot;;</font><br>
+  <br>
+  <font color="#666666">// Set the behavior to &quot;link&quot;: </font><br>
+<font color="#CC0000">defaultWimpyConfigs.clickWindowAction=&quot;link&quot;;<br>
+defaultWimpyConfigs.infoButtonAction=&quot;link&quot;;</font><br>
+  <br>
+  <font color="#666666">// Wire the linkToWindow to javascript:</font><br>
+  <font color="#CC0000">defaultWimpyConfigs.linkToWindow=&quot;javascript&quot;;</font><br>
+  <br>
+  <font color="#666666">// Enable handler events:</font><br>
+  <font color="#CC0000">enableWimpyEvents = true;</font><br>
+  <br>
+  <font color="#666666">// Re-write the handler function:</font><br>
+  <font color="#CC0000">function handleLinkClick(returnedObject){<br>
+ &nbsp;&nbsp; alert(returnedObject);<br>
+  }</font><br>
+  <br>
+  <font color="#666666">// Set the default playlist:</font><br>
+  <font color="#CC0000">defaultWimpyConfigs.wimpyApp = &quot;playlist4.xml&quot;;</font><br>
+  <br>
+  <font color="#666666">// Render the player using the default configs:</font> <br>
+  <font color="#CC0000">makeWimpyPlayer();</font><br>
+  <br>
+&lt;/script&gt;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><a href="http://www.wimpyplayer.net/docs/rave" target="_parent">Part of the Wimpy Rave documentation. </a><br>
+&copy;2009 <a href="http://www.wimpyplayer.net">Plaino</a> </p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+
+</body>
+</html>

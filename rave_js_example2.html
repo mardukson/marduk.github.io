@@ -1,0 +1,55 @@
+<html>
+<head>
+<title>Example 2 - JavaScript Controls - Wimpy Rave Player (AJAX)</title>
+<link href="rave_js_stylesheet.css" rel="stylesheet" type="text/css">
+
+<script language='javascript' src='rave.js'></script>
+
+</head>
+
+<body>
+
+
+<p><b>Example 2</b></p>
+<p>This example loads <strong>two</strong> tracks into the player at startup. Each file reference is seperated by a "pipe" ( | ) character.</p>
+<p>You will notice that we've loaded an XML playlist at the same time that we loaded the video files. external playlists are loaded into Wimpy the same way that media files are loaded in. </p>
+<p>The items do not display within Rave in the same order that they appear within the JavaScript funtion because, by default, items are sorted alphabetically. You can set the sort order when using the <a href="http://www.wimpyplayer.net/customize/">Customizer Tool</a>.&nbsp; To use the same order as the XML playlist, set &quot;<b><a href="http://www.wimpyplayer.net/docs/rave/api/sortField.html">sortField</a></b>&quot; to &quot;<b>none</b>&quot; (Customizer Tool &gt; Start Up &gt; Sort Playlist By: &quot;Don't Sort&quot;.</p>
+
+
+
+<div id="flashcontent">This DIV contents to be replaced by Rave.</div>
+<script language="JavaScript" >
+defaultWimpyConfigs.wimpyWidth	= "332";
+defaultWimpyConfigs.wimpyHeight	= "389";
+defaultWimpyConfigs.wimpySkin	= "skins/skin_js_examples.xml";
+makeWimpyPlayer("example1.flv|playlist.xml|example2.flv");
+</script>
+
+
+
+
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><b>Source Code</b></p>
+<p class="codedBox">&lt;script language='javascript' src='rave.js'&gt;&lt;/script&gt;<br>  
+  <font color="#000000">&lt;div id=&quot;flashcontent&quot;&gt;This DIV contents to be replaced by Rave.&lt;/div&gt;</font><br>
+  &lt;script language=&quot;JavaScript&quot; &gt;<br>
+  <font color="#CC0000">defaultWimpyConfigs.wimpyWidth	= &quot;332&quot;;<br>
+  defaultWimpyConfigs.wimpyHeight	= &quot;389&quot;;<br>
+  defaultWimpyConfigs.wimpySkin	= &quot;skins/skin_js_examples.xml&quot;;<br>
+  makeWimpyPlayer(&quot;example1.flv|playlist.xml|example2.flv&quot;);</font><br>
+&lt;/script&gt;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><a href="http://www.wimpyplayer.net/docs/rave" target="_parent">Part of the Wimpy Rave documentation. </a><br>
+&copy;2009 <a href="http://www.wimpyplayer.net">Plaino</a></p>
+<p>&nbsp;</p>
+<p></p>
+
+
+</body>
+</html>

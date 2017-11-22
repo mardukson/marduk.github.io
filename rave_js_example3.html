@@ -1,0 +1,124 @@
+<html>
+<head>
+<title>Example 3 - JavaScript Controls - Wimpy Rave Player (AJAX)</title>
+<link href="rave_js_stylesheet.css" rel="stylesheet" type="text/css">
+
+<script language='javascript' src='rave.js'></script>
+
+</head>
+
+<body>
+
+
+
+<p><b>Example 3 </b></p>
+<p>This example uses XML data to load multiple tracks into the player. The XML data is "built" using javascript. <br>
+The benefit of using XML data is that you can include additional information for each track such as artist, title, graphic and a link. </p>
+<p>All data going into the player must be plain text. <font color="#CC0000"><strong>Do not</strong></font> put an XML object into the JavaScript function (e.g. XML-DOM) but rather use plain text &quot;in the shape of&quot; XML. Wimpy will parse the text into an XML object within Wimpy. Wimpy will not accept a &quot;true&quot; XML object.</p>
+<p> There are a few different XML playlist formats that Wimpy will accept: Wimpy XML playlists, RSS / Podcast playlists and XSPF playlists. The example below is a Wimpy XML playlists. </p>
+
+
+
+
+
+<div id="flashcontent">This DIV contents to be replaced by Rave.</div>
+<script language="JavaScript" >
+
+// Create XML playlist. 
+// NOTE: See "rave_js_example_javascript_playlists.js" for alternate methods for generating an XML playlist using an array container.
+var myPlaylist = "";
+myPlaylist += "<playlist>";
+myPlaylist += "		<item>";
+myPlaylist += "			<filename>example1.flv</filename>";
+myPlaylist += "			<artist>Killeen and Gieson</artist>";
+myPlaylist += "			<title>Example 1</title>";
+myPlaylist += "			<link>http://www.gieson.com/</link>";
+myPlaylist += "			<image>example1.jpg</image>";
+myPlaylist += "		</item>";
+myPlaylist += "		<item>";
+myPlaylist += "			<filename>example2.flv</filename>";
+myPlaylist += "			<artist>Killeen and Gieson</artist>";
+myPlaylist += "			<title>Example 2</title>";
+myPlaylist += "			<link>http://www.wimpyplayer.net/</link>";
+myPlaylist += "			<image>example2.jpg</image>";
+myPlaylist += "		</item>";
+myPlaylist += "		<item>";
+myPlaylist += "			<filename>example3.flv</filename>";
+myPlaylist += "			<artist>Killeen and Gieson</artist>";
+myPlaylist += "			<title>Example 3</title>";
+myPlaylist += "			<link>http://www.plaino.com/</link>";
+myPlaylist += "			<image>example3.jpg</image>";
+myPlaylist += "		</item>";
+myPlaylist += "</playlist>";
+
+// Set the width and height of the player by over-writing the default config options:
+defaultWimpyConfigs.wimpyWidth	= "332";
+defaultWimpyConfigs.wimpyHeight	= "389";
+// Set the skin:
+defaultWimpyConfigs.wimpySkin	= "skins/skin_js_examples.xml";
+
+// Render the player
+makeWimpyPlayer(myPlaylist);
+
+</script>
+
+
+
+
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><strong>Source Code</strong></p>
+<p class="codedBox">&lt;script language='javascript' src='rave.js'&gt;&lt;/script&gt;<font color="#000000"><br>&lt;div id=&quot;flashcontent&quot;&gt;This DIV contents to be replaced by Rave.&lt;/div&gt;</font><br>
+&lt;script language=&quot;JavaScript&quot; &gt;<br>
+<font color="#666666"><br>
+// Create XML playlist. <br>
+// NOTE: See &quot;rave_js_example_javascript_playlists.js&quot; for alternate methods for generating an XML playlist using an array container.</font><br>
+<br>
+<font color="#CC0000">var myPlaylist = &quot;&quot;;<br>
+myPlaylist += &quot;&lt;playlist&gt;&quot;;<br>
+myPlaylist += &quot;		&lt;item&gt;&quot;;<br>
+myPlaylist += &quot;			&lt;filename&gt;example1.flv&lt;/filename&gt;&quot;;<br>
+myPlaylist += &quot;			&lt;artist&gt;Killeen and Gieson&lt;/artist&gt;&quot;;<br>
+myPlaylist += &quot;			&lt;title&gt;Example 1&lt;/title&gt;&quot;;<br>
+myPlaylist += &quot;			&lt;link&gt;http://www.gieson.com/&lt;/link&gt;&quot;;<br>
+myPlaylist += &quot;			&lt;image&gt;example1.jpg&lt;/image&gt;&quot;;<br>
+myPlaylist += &quot;		&lt;/item&gt;&quot;;<br>
+myPlaylist += &quot;		&lt;item&gt;&quot;;<br>
+myPlaylist += &quot;			&lt;filename&gt;example2.flv&lt;/filename&gt;&quot;;<br>
+myPlaylist += &quot;			&lt;artist&gt;Killeen and Gieson&lt;/artist&gt;&quot;;<br>
+myPlaylist += &quot;			&lt;title&gt;Example 2&lt;/title&gt;&quot;;<br>
+myPlaylist += &quot;			&lt;link&gt;http://www.wimpyplayer.net/&lt;/link&gt;&quot;;<br>
+myPlaylist += &quot;			&lt;image&gt;example2.jpg&lt;/image&gt;&quot;;<br>
+myPlaylist += &quot;		&lt;/item&gt;&quot;;<br>
+myPlaylist += &quot;		&lt;item&gt;&quot;;<br>
+myPlaylist += &quot;			&lt;filename&gt;example3.flv&lt;/filename&gt;&quot;;<br>
+myPlaylist += &quot;			&lt;artist&gt;Killeen and Gieson&lt;/artist&gt;&quot;;<br>
+myPlaylist += &quot;			&lt;title&gt;Example 3&lt;/title&gt;&quot;;<br>
+myPlaylist += &quot;			&lt;link&gt;http://www.plaino.com/&lt;/link&gt;&quot;;<br>
+myPlaylist += &quot;			&lt;image&gt;example3.jpg&lt;/image&gt;&quot;;<br>
+myPlaylist += &quot;		&lt;/item&gt;&quot;;<br>
+myPlaylist += &quot;&lt;/playlist&gt;&quot;;</font><br>
+<br>
+<font color="#666666">// Set the width and height of the player by over-writing the default config options:</font><br>
+<font color="#CC0000">defaultWimpyConfigs.wimpyWidth	= &quot;332&quot;;<br>
+defaultWimpyConfigs.wimpyHeight	= &quot;389&quot;;</font><br>
+<br>
+<font color="#666666">// Set the skin:</font><br>
+<font color="#CC0000">defaultWimpyConfigs.wimpySkin	= &quot;skins/skin_js_examples.xml&quot;;</font><br>
+<font color="#666666"><br>
+// Render the player</font><br>
+<font color="#CC0000">makeWimpyPlayer(myPlaylist);</font><br>
+<br>
+&lt;/script&gt;</p>
+<p class="codeExample">&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><a href="http://www.wimpyplayer.net/docs/rave" target="_parent">Part of the Wimpy Rave documentation. </a><br>
+  &copy;2009 <a href="http://www.wimpyplayer.net">Plaino</a></p>
+<p>&nbsp;</p>
+<p></p>
+</body>
+</html>

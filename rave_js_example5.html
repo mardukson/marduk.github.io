@@ -1,0 +1,227 @@
+<html>
+<head>
+<title>Example 5 - JavaScript Controls - Wimpy Rave Player (AJAX)</title>
+<link href="rave_js_stylesheet.css" rel="stylesheet" type="text/css">
+
+<script language='javascript' src='rave_js_example_javascript_playlists.js'></script>
+<script language='javascript' src='rave.js'></script>
+
+</head>
+
+<body>
+
+
+
+
+
+
+<b>Example 5 </b>
+<p>This example shows how you can load items into Wimpy and control the player through standard HTML</p>
+<table width="500" border="0" cellspacing="10">
+  <tr>
+    <td align="left" valign="top">
+
+
+
+<!-- START WIMPY PLAYER CODE -->
+<div id="flashcontent">This DIV contents to be replaced by Rave.</div>
+<script language="JavaScript" >
+
+defaultWimpyConfigs.wimpyWidth	= "332";
+defaultWimpyConfigs.wimpyHeight	= "389";
+defaultWimpyConfigs.wimpySkin	= "skins/skin_js_examples.xml";
+defaultWimpyConfigs.wimpyApp	= "playlist1.xml";
+
+makeWimpyPlayer();
+
+</script>
+<!-- END WIMPY PLAYER CODE -->
+
+
+
+	</td>
+    <td align="left" valign="top" nowrap>
+		<p>
+		
+		<a href="javascript:;" onClick="wimpy_clearPlaylist();">
+		Clear Playlist 
+		 </a>
+		 <br>
+		
+		<a href="javascript:;" onClick="wimpy_appendPlaylist(addFilesA, false)">
+		Add One Track 
+		 </a>
+		 <br>
+		
+		<a href="javascript:;" onClick="wimpy_appendPlaylist(addFilesC, false)">
+		Add Multiple Tracks 
+		 </a>
+		 <br>
+		
+		<a href="javascript:;" onClick="wimpy_clearPlaylist();">
+		Clear Playlist 
+		 </a>
+		 <br>
+		
+		<a href="javascript:;" onClick="wimpy_loadExternalPlaylist('playlist1.xml')">
+		Load and open external playlist 
+		 </a>
+		 <br>
+		 <br>
+		
+		<a href="javascript:;" onClick="wimpy_clearPlaylist();">
+		Clear Playlist 
+		 </a>
+		 <br>
+		
+		<a href="javascript:;" onClick="wimpy_appendPlaylist(addFilesB, true)">
+		Add One Track (and play immediately)
+		 </a>
+		 <br>
+		
+		<a href="javascript:;" onClick="wimpy_pause()">
+		Pause 
+		 </a>
+		 <br>
+		
+		<a href="javascript:;" onClick="wimpy_play()">
+		Play 
+		 </a>
+		 <br>
+		
+		<a href="javascript:;" onClick="wimpy_stop()">
+		Stop 
+		 </a>
+		 <br>
+		 <br>
+		
+		<a href="javascript:;" onClick="wimpy_clearPlaylist();">
+		Clear Playlist 
+		 </a>
+		 <br>
+		
+		<a href="javascript:;" onClick="wimpy_appendPlaylist(addFilesC, false)">
+		Add Multiple Tracks 
+		 </a>
+		 <br>
+		
+		<a href="javascript:;" onClick="wimpy_gotoTrack(2)">
+		Go to and play the second track in the playlist
+		 </a>
+		 <br>
+		 
+		<a href="javascript:;" onClick="wimpy_next()">
+		Next 
+		 </a>
+		 <br>
+		 
+		<a href="javascript:;" onClick="wimpy_prev()">
+		Previous 
+		 </a>
+		 <br>
+		 
+	    </p>
+	</td>
+  </tr>
+</table>
+
+
+
+
+
+
+
+<p><strong>Source Code</strong></p>
+<p>The following lines are traditionally written in the &lt;head&gt; of the page. NOTE: 
+Although it is not required that these lines appear between the opening &lt;head&gt; and closing &lt;/head&gt;, they may also appear in the &lt;body&gt;, however, if these lines do appear in the &lt;body&gt; they must be written above any code that executes any function contained in the external file. </p>
+<p class="codedBox"><font color="#666666">&lt;!-- NOTE: We've externalized the playlist data for the &quot;Add Multiple Tracks&quot; links. --&gt; </font><br>
+  &lt;script language='javascript' src='<font color="#CC0000">rave_js_example_javascript_playlists.js</font>'&gt;&lt;/script&gt;<br>
+&lt;script language='javascript' src='<font color="#CC0000">rave.js</font>'&gt;&lt;/script&gt;</p>
+<p>The following goes into the &lt;body&gt; </p>
+<p class="codedBox"><font color="#000000">&lt;div id=&quot;flashcontent&quot;&gt;This DIV contents to be replaced by Rave.&lt;/div&gt;</font><br>
+  &lt;script language=&quot;JavaScript&quot; &gt;<br>
+  <br>
+  <font color="#666666">// Set the width and height of the player by over-writing the default config options:</font><br>
+  <font color="#CC0000">defaultWimpyConfigs.wimpyWidth	= &quot;332&quot;;<br>
+  defaultWimpyConfigs.wimpyHeight	= &quot;389&quot;;<br>
+  defaultWimpyConfigs.wimpySkin	= &quot;skins/skin_js_examples.xml&quot;;<br>
+  defaultWimpyConfigs.wimpyApp	= &quot;playlist1.xml&quot;;</font><br>
+  <br>
+  <font color="#666666">// Render the player</font><br>
+  <font color="#CC0000">makeWimpyPlayer();</font><br>
+  <br>
+  <br>
+&lt;/script&gt;</p>
+<p>The following lines are used to interact with the player: </p>
+<p class="codedBox"> &lt;a href=&quot;javascript:;&quot; onClick=&quot;<font color="#CC0000">wimpy_clearPlaylist();</font>&quot;&gt;<br>
+  <font color="#000000">Clear Playlist </font><br>
+&lt;/a&gt;<br>
+<br>
+&lt;a href=&quot;javascript:;&quot; onClick=&quot;<font color="#CC0000">wimpy_appendPlaylist(addFilesA, false)</font>&quot;&gt;<br>
+<font color="#000000">Add One Track </font><br>
+&lt;/a&gt;<br>
+<br>
+&lt;a href=&quot;javascript:;&quot; onClick=&quot;<font color="#CC0000">wimpy_appendPlaylist(addFilesC, false)</font>&quot;&gt;<br>
+<font color="#000000">Add Multiple Tracks</font> <br>
+&lt;/a&gt;<br>
+<br>
+&lt;a href=&quot;javascript:;&quot; onClick=&quot;<font color="#CC0000">wimpy_clearPlaylist();</font>&quot;&gt;<br>
+<font color="#000000">Clear Playlist </font><br>
+&lt;/a&gt;<br>
+<br>
+&lt;a href=&quot;javascript:;&quot; onClick=&quot;<font color="#CC0000">wimpy_loadExternalPlaylist('playlist.xml')</font>&quot;&gt;<br>
+<font color="#000000">Load and open external playlist </font><br>
+&lt;/a&gt;<br>
+<br>
+&lt;a href=&quot;javascript:;&quot; onClick=&quot;<font color="#CC0000">wimpy_clearPlaylist();</font>&quot;&gt;<br>
+<font color="#000000">Clear Playlist </font><br>
+&lt;/a&gt;<br>
+<br>
+&lt;a href=&quot;javascript:;&quot; onClick=&quot;<font color="#CC0000">wimpy_appendPlaylist(addFilesB, true)</font>&quot;&gt;<br>
+<font color="#000000">Add One Track (and play immediately)</font><br>
+&lt;/a&gt;<br>
+<br>
+&lt;a href=&quot;javascript:;&quot; onClick=&quot;<font color="#CC0000">wimpy_pause()</font>&quot;&gt;<br>
+<font color="#000000">Pause </font><br>
+&lt;/a&gt;<br>
+<br>
+&lt;a href=&quot;javascript:;&quot; onClick=&quot;<font color="#CC0000">wimpy_play()</font>&quot;&gt;<br>
+<font color="#000000">Play </font><br>
+&lt;/a&gt;<br>
+<br>
+&lt;a href=&quot;javascript:;&quot; onClick=&quot;<font color="#CC0000">wimpy_stop()</font>&quot;&gt;<br>
+<font color="#000000">Stop </font><br>
+&lt;/a&gt;<br>
+<br>
+&lt;a href=&quot;javascript:;&quot; onClick=&quot;<font color="#CC0000">wimpy_clearPlaylist()</font>&quot;&gt;<br>
+<font color="#000000">Clear Playlist </font><br>
+&lt;/a&gt;<br>
+<br>
+&lt;a href=&quot;javascript:;&quot; onClick=&quot;<font color="#CC0000">wimpy_appendPlaylist(addFilesC, false)</font>&quot;&gt;<br>
+<font color="#000000">Add Multiple Tracks </font><br>
+&lt;/a&gt;<br>
+<br>
+&lt;a href=&quot;javascript:;&quot; onClick=&quot;<font color="#CC0000">wimpy_gotoTrack(2)</font>&quot;&gt;<br>
+<font color="#000000">Go to and play the second track in the playlist</font><br>
+&lt;/a&gt;<br>
+<br>
+&lt;a href=&quot;javascript:;&quot; onClick=&quot;<font color="#CC0000">wimpy_next()</font>&quot;&gt;<br>
+<font color="#000000">Next </font><br>
+&lt;/a&gt;<br>
+<br>
+&lt;a href=&quot;javascript:;&quot; onClick=&quot;<font color="#CC0000">wimpy_prev()</font>&quot;&gt;<br>
+<font color="#000000">Previous </font><br>
+&lt;/a&gt;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><a href="http://www.wimpyplayer.net/docs/rave" target="_parent">Part of the Wimpy Rave documentation. </a><br>
+  &copy;2009 <a href="http://www.wimpyplayer.net">Plaino</a></p>
+<p></p>
+<p></p>
+<p>&nbsp;</p>
+
+
+
+</body>
+</html>

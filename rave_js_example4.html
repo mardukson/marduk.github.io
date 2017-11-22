@@ -1,0 +1,77 @@
+<html>
+<head>
+<title>Example 4 - JavaScript Controls - Wimpy Rave Player (AJAX)</title>
+<link href="rave_js_stylesheet.css" rel="stylesheet" type="text/css">
+
+<script language='javascript' src='rave.js'></script>
+
+</head>
+
+<body>
+
+
+
+
+<p><b>Example 4 </b></p>
+<p>This example loads and opens an external playlist at startup.</p>
+<p>As you can see, we've simply over-written the &quot;wimpyApp&quot; variable that was previously defined within rave.js. Since rave.js is loaded in the &lt;head&gt; of this HTML page all the variables are already established and we can change thier value as needed in the &lt;body&gt; portion of this page just before the player gets rendered.</p>
+<blockquote>
+  <p>NOTE: One might think to use the <strong>wimpy_loadExternalPlaylist</strong> or <strong>wimpy_appendPlaylist</strong> functions immediately after <font color="#0000FF"><strong>makeWimpyPlayer</strong></font>. Attempting to call these functions will not work because it takes a couple seconds for wimpy to initialize. It is best to use these functions as &quot;user input&quot; functions, where a user has to click on something in order for it to ocur. </p>
+  <p>The only other alternative would be to use the <strong>wimpy_amReady_ask</strong> function to check to see if Wimpy is ready to accept function calls. Once wimpy_amReady_ask returns &quot;true&quot; you can use any given function to communicate with Wimpy. </p>
+</blockquote>
+
+
+
+
+
+<div id="flashcontent">This DIV contents to be replaced by Rave.</div>
+<script language="JavaScript" >
+
+// Set the width and height of the player by over-writing the default config options:
+defaultWimpyConfigs.wimpyWidth	= "332";
+defaultWimpyConfigs.wimpyHeight	= "389";
+defaultWimpyConfigs.wimpySkin	= "skins/skin_js_examples.xml";
+// Set the URL to the playlist file as "wimpyApp"
+// When wimpyApp is defined, the contents of the playlist are opened and playable within the player.
+// NOTE: You may notice that the other option "playlist" (e.g. defaultWimpyConfigs.playlist = "") is also available. 
+//       Setting an XML FILE for playlist will only put the playlist file into the player, Rave will not open that.
+defaultWimpyConfigs.wimpyApp = "playlist1.xml";
+
+makeWimpyPlayer();
+
+</script>
+
+
+
+
+<p>&nbsp;</p>
+<p><strong>Source Code</strong></p>
+<p class="codedBox">&lt;script language='javascript' src='rave.js'&gt;&lt;/script&gt;<font color="#000000"><br>
+  &lt;div id=&quot;flashcontent&quot;&gt;This DIV contents to be replaced by Rave.&lt;/div&gt;</font><br>
+&lt;script language=&quot;JavaScript&quot; &gt;<br>
+<br>
+<font color="#666666">// Set the width and height of the player by over-writing the default config options:</font><br>
+<font color="#CC0000">defaultWimpyConfigs.wimpyWidth	= &quot;332&quot;;<br>
+defaultWimpyConfigs.wimpyHeight	= &quot;389&quot;;<br>
+defaultWimpyConfigs.wimpySkin	= &quot;skins/skin_js_examples.xml&quot;;</font><br>
+<br>
+<font color="#666666">// Set the URL to the playlist file as &quot;wimpyApp&quot;<br>
+  // When wimpyApp is defined, the contents of the playlist are opened and playable within the player.<br>
+  // NOTE: You may notice that the other option &quot;playlist&quot; (e.g. defaultWimpyConfigs.playlist = &quot;&quot;) is also available. <br>
+  //       Setting an XML FILE for playlist will only put the playlist file into the player, Rave will not open that.</font><br>
+  <font color="#CC0000">defaultWimpyConfigs.wimpyApp = &quot;playlist1.xml&quot;;</font><br>
+<br>
+<font color="#CC0000">makeWimpyPlayer();</font><br>
+  <br>
+&lt;/script&gt;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><a href="http://www.wimpyplayer.net/docs/rave" target="_parent">Part of the Wimpy Rave documentation. </a><br>
+  &copy;2009 <a href="http://www.wimpyplayer.net">Plaino</a></p>
+<p>&nbsp;</p>
+<p></p>
+
+</body>
+</html>

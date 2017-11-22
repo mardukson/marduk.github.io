@@ -1,0 +1,331 @@
+<html>
+<head>
+<title>Example 7 - JavaScript Controls - Wimpy Rave Player (AJAX)</title>
+<link href="rave_js_stylesheet.css" rel="stylesheet" type="text/css">
+
+<script language='javascript' src='rave_js_examples.js'></script>
+<script language='javascript' src='rave_js_example_javascript_playlists.js'></script>
+<script language='javascript' src='rave.js'></script>
+
+
+
+</head>
+
+<body>
+
+
+
+
+
+<p><b>Example 7 </b></p>
+<p>This example shows you how to pop up a window, then control the player from this page.</p>
+<table width="55%" border="0" cellspacing="10">
+  <tr>
+    <td width="66%" align="left" valign="top"><table width="100%" border="0" cellpadding="10" cellspacing="0" bgcolor="#FFFFCC">
+        <tr>
+          <td><p><b><font color="#CC0000">IMPORTANT, IMPORTANT, IMPORTATNT:</font></b></p>
+            <p>You must first pop up the player by performing one of the following: </p>
+            <p><a href="javascript:;" onClick="wimpy_popAndPlay('rave_js_example7-popup.html', 400, 400, addFilesC, 'no')">- Pop up Rave with default playlist. </a> </p>
+            <p> <a href="javascript:;" onClick="wimpy_popAndPlay('rave_js_example7-popup.html', 400, 400, 'example1.flv', 'yes')"> - Pop up Rave with specific file and start playing immediately. </a></p>
+            <p><b>OR</b>, click the &quot;fullscreen / detach&quot; button <b>within Rave </b>below (the button to the left of the blue info area) </p></td>
+        </tr>
+      </table>
+      <p><b><font color="#CC0000">NOTE: </font></b><font color="#CC0000">THE PLAYER BELOW ONLY EXISTS SO YOU CAN USE THE &quot;FULL SCREEN&quot; BUTTON:</font>
+      
+      <div id="flashcontent">You need to upgrade your Flash Player</div>
+<p>
+  <script language="JavaScript" >
+
+// This function is used in the "Call multiple functions" example.
+function callMultipleFunctions(){
+	wimpy_popout_window.wimpy_clearPlaylist();
+	// addFilesC is located in the external javascript file "rave_js_example_javascript_playlists.js" which was loaded in the <head> tag.
+	wimpy_popout_window.wimpy_appendPlaylist(addFilesC, true);
+}
+
+// Create a new object (can be any name) and add options to it:
+var myConfigs = new Object();
+
+myConfigs.wimpyApp		= "playlist1.xml";
+myConfigs.wimpySkin		= "skins/skin_js_examples.xml";
+myConfigs.fsMode		= "detach";
+myConfigs.playlist		= "example3.flv";
+myConfigs.wimpyWidth	= "330";
+myConfigs.wimpyHeight	= "410";
+// Example of adding another option
+//myConfigs.startPlayingOnload = "yes";
+
+// create a player and include the config object as the argument:
+makeWimpyPlayer(myConfigs);
+
+
+</script>
+  <!-- END WIMPY PLAYER CODE -->
+</p>
+<p>&nbsp;</p>
+</td>
+    <td width="34%" align="left" valign="top" nowrap="nowrap"><p><b>Returned Data  :</b></p>
+      <div class="returnedDataBox" id="trackInfo" style="font-size:12px;font-family:'Courier New', Courier, monospace;height:80px;overflow:auto;background-color:#FFFFE6"> Track Info will display here </div>
+      <p>&nbsp;</p>
+      <p><a href="javascript:;" onClick="displayInfo(wimpy_popout_window.wimpy_amReady_ask())">- a Ask if Wimpy is ready</a></p>
+      <p><a href="javascript:;" onClick="displayObject(wimpy_popout_window.wimpy_play())">- Play First Track </a><br />
+      <a href="javascript:;" onClick="displayObject(wimpy_popout_window.wimpy_getTrackInfo())">- Get info on current track</a> <br />
+            <a href="javascript:;" onClick="displayObject(wimpy_popout_window.wimpy_getTrackInfo(2))"> - Get info on the second track in the playlist.</a> <br />
+            <a href="javascript:;" onClick="callMultipleFunctions()"> - Call multiple functions (Syncronous behaviour)</a> <br />
+            <a href="javascript:;" onClick="displayInfo(wimpy_popout_window.wimpy_amReady_ask())"></a> <br />
+            <a href="javascript:;" onClick="displayInfo(wimpy_popout_window.wimpy_getPlayheadSeconds())"> - Get playhead position in seconds</a> <br />
+            <a href="javascript:;" onClick="displayInfo(wimpy_popout_window.wimpy_getPlayheadPercent())"> - Get playhead position in percent complete</a> <br />
+            <a href="javascript:;" onClick="wimpy_popout_window.wimpy_setPlayheadSeconds(5)"> - <b>Set</b> playhead position to 5 seconds</a> <br />
+            <a href="javascript:;" onClick="wimpy_popout_window.wimpy_setPlayheadPercent(35)"> - <b>Set</b> playhead position to 35 percent complete</a> <br />
+            <a href="javascript:;" onClick="displayInfo(wimpy_popout_window.wimpy_getLoadPercent())"> - Get load percent</a> <br />
+            <a href="javascript:;" onClick="displayObject(wimpy_popout_window.wimpy_getLoadState())"> - Get load state</a> <br />
+            <a href="javascript:;" onClick="displayObject(wimpy_popout_window.wimpy_getPlayerState())"> - Get player state</a> <br />
+            <a href="javascript:;" onClick="displayInfo(wimpy_popout_window.wimpy_getTotalPlaylistItems())"> - Get total playlist items </a> <br />
+            <a href="javascript:;" onClick="displayPlaylistObject(wimpy_popout_window.wimpy_getPlaylist())"> - Get playlist</a> <br />
+          - Set volume to <a href="javascript:;" onClick="wimpy_popout_window.wimpy_setVolume(40)">40 percent</a> : <a href="javascript:;" onClick="wimpy_popout_window.wimpy_setVolume(100)">100 percent</a> <br />
+          - Turn Loop Track: <a href="javascript:;" onClick="wimpy_popout_window.wimpy_setLoopTrackState('on')"> &quot;on&quot; </a> : <a href="javascript:;" onClick="wimpy_popout_window.wimpy_setLoopTrackState('off')">&quot;off&quot;</a><br />
+          - Turn Random Playback <a href="javascript:;" onClick="wimpy_popout_window.wimpy_setRandomState('on')">&quot;on&quot; </a> : <a href="javascript:;" onClick="wimpy_popout_window.wimpy_setRandomState('off')">&quot;off&quot; </a><br />
+          - Turn Repeat Playlist: <a href="javascript:;" onClick="wimpy_popout_window.wimpy_setRepeatState('on')">&quot;on&quot; </a> : <a href="javascript:;" onClick="wimpy_popout_window.wimpy_setRepeatState('off')">&quot;off&quot; </a><br />
+          - Turn Mute: <a href="javascript:;" onClick="wimpy_popout_window.wimpy_setMuteState('on')">&quot;on&quot; </a> : <a href="javascript:;" onClick="wimpy_popout_window.wimpy_setMuteState('off')">&quot;off&quot; </a><br />
+          <!-- NOTE: Notice that for wimpy_updateInfoDisplay this we are using 
+			single quotes around the function and double quotes within the arguments -->
+          <a href="javascript:;" onclick='wimpy_popout_window.wimpy_updateInfoDisplay(&quot;My New Artist&quot;, &quot;My New Title&quot;)'> - Update Artist and Title </a></p>
+		  
+		  <p>
+			<a href="javascript:;" onClick="wimpy_popout_window.wimpy_appendPlaylist(addFilesA, false)">Add One Track </a><br>
+			<a href="javascript:;" onClick="wimpy_popout_window.wimpy_appendPlaylist(addFilesC, false)"> Add Multiple Tracks </a><br>
+			<a href="javascript:;" onClick="wimpy_popout_window.wimpy_clearPlaylist();">Clear Playlist </a><br>
+			<a href="javascript:;" onClick="wimpy_popout_window.wimpy_loadExternalPlaylist('playlist1.xml', 'true')">Load and open external playlist</a><br>
+			<a href="javascript:;" onClick="wimpy_popout_window.wimpy_loadExternalPlaylist('playlist1.xml', 'false')">Load and open external playlist (and start playing)</a><br>
+			<br>
+			<a href="javascript:;" onClick="wimpy_popout_window.wimpy_clearPlaylist();">Clear Playlist </a><br>
+			<a href="javascript:;" onClick="wimpy_popout_window.wimpy_appendPlaylist(addFilesB, true)">Add One Track (and play immediately)</a><br>
+			<a href="javascript:;" onClick="wimpy_popout_window.wimpy_pause()">Pause </a><br>
+			<a href="javascript:;" onClick="wimpy_popout_window.wimpy_play()">Play </a><br>
+			<a href="javascript:;" onClick="wimpy_popout_window.wimpy_stop()">Stop </a><br>
+			<br>
+			<a href="javascript:;" onClick="wimpy_popout_window.wimpy_clearPlaylist();">Clear Playlist </a><br>
+			<a href="javascript:;" onClick="wimpy_popout_window.wimpy_appendPlaylist(addFilesC, false)">Add Multiple Tracks </a><br>
+			<a href="javascript:;" onClick="wimpy_popout_window.wimpy_gotoTrack(2)"> Go to and play the second track in the playlist</a><br>
+			<a href="javascript:;" onClick="wimpy_popout_window.wimpy_next()"> Next </a><br>
+	<a href="javascript:;" onClick="wimpy_popout_window.wimpy_prev()"> Previous </a></p>		  </td>
+  </tr>
+</table>
+<p>&nbsp;</p>
+<p><b>Source Code</b></p>
+<p>We use the same setup as in examples 5 and 6, however, we need to &quot;tack on&quot; the popped up window object to the beginning of each function call:</p>
+<p><font class="codedBox">&lt;a href=&quot;javascript:;&quot; onClick=&quot;<font color="#339900">wimpy_popout_window.</font><font color="#CC0000">wimpy_play();</font>&quot;&gt;Play &lt;/a&gt;</font></p>
+<p>When Wimpy detaches the player or when you use the <strong>wimpy_popAndPlay()</strong>, a new object named &quot;<font color="#CC0000">wimpy_popout_window</font>&quot; is created, which allows &quot;this&quot; page to communicate with the popped up page. </p>
+<p>Wimpy is also set up so that if a user navigates from &quot;this&quot; page to <a href="rave_js_example7-otherpage.html">another page</a> on your site, the popped up player can still be controlled from the <a href="rave_js_example7-otherpage.html">other page</a>.</p>
+<p>The following lines are traditionally written in the &lt;head&gt; of the page. NOTE: 
+  Although it is not required that these lines appear between the opening &lt;head&gt; and closing &lt;/head&gt;, they may also appear in the &lt;body&gt;, however, if these lines do appear in the &lt;body&gt; they must be written above any code that executes any function contained in the external file. </p>
+<p class="codedBox"><font color="#666666">&lt;!-- NOTE: The &quot;rave_js_examples.js&quot; file contains functions to write returned data onto this page.--&gt; </font><br>
+  &lt;script language='javascript' src='<font color="#CC0000">rave_js_examples.js</font>'&gt;&lt;/script&gt;<br>
+  <font color="#666666">&lt;!-- NOTE: We've externalized the playlist data for the &quot;Add Multiple Tracks&quot; links. --&gt; </font><br>
+  &lt;script language='javascript' src='<font color="#CC0000">rave_js_example_javascript_playlists.js</font>'&gt;&lt;/script&gt;<br>
+  &lt;script language='javascript' src='<font color="#CC0000">rave.js</font>'&gt;&lt;/script&gt;<br>
+</p>
+<p>The following goes into the &lt;body&gt; </p>
+<p>(Same as Example 6, but added &quot;<font color="#CC0000"><font color="#339900">wimpy_popout_window</font></font>&quot; in front of function calls.)</p>
+<p class="codedBox"><font color="#000000">&lt;div id=&quot;flashcontent&quot;&gt;You need to upgrade your Flash Player&lt;/div&gt;</font><br>
+  &lt;script language=&quot;JavaScript&quot; &gt;<font color="#CC0000"><br>
+  <br>
+    function callMultipleFunctions(){<br>
+  &nbsp;&nbsp; <font color="#339900">wimpy_popout_window.</font>wimpy_clearPlaylist();<br>
+  &nbsp;&nbsp; <font color="#666666">// addFilesC is located in the external javascript file &quot;rave_js_example_javascript_playlists.js&quot; which was loaded in the &lt;head&gt; tag.</font><br>
+  &nbsp;&nbsp; <font color="#339900">wimpy_popout_window.</font>wimpy_appendPlaylist(addFilesC, true);<br>
+  &nbsp;&nbsp; <font color="#339900">wimpy_popout_window.</font>wimpy_appendPlaylist(addFilesC, true);<br>
+    }<br>
+  <br>
+  <font color="#666666">// Setting this to TRUE allows us to receive notifications from Wimpy:</font><br>
+    enableWimpyEvents = true;<br>
+  <br>
+  <font color="#666666">// Create a new object (can be any name) and add options to it:</font><br>
+    var myConfigs = new Object();<br>
+    myConfigs.wimpyApp		= &quot;playlist1.xml&quot;;<br>
+    myConfigs.wimpySkin		= &quot;skins/skin_js_examples.xml&quot;;<br>
+    myConfigs.wimpyWidth	= &quot;330&quot;;<br>
+    myConfigs.wimpyHeight	= &quot;410&quot;;<br>
+  <br>
+  </font><font color="#666666">// Render the player and include the config object as the argument:</font><font color="#CC0000"><br>
+    makeWimpyPlayer(myConfigs);</font><br>
+  <br>
+  &lt;/script&gt;</p>
+<p>The following lines are used to interact with the player: </p>
+<p>(Same as Example 6, but added &quot;<font color="#CC0000"><font color="#339900">wimpy_popout_window</font></font>&quot; in front of function calls.)</p>
+<p class="codedBox">&lt;a href=&quot;javascript:;&quot; onClick=&quot;<font color="#CC0000">displayInfo(<font color="#339900">wimpy_popout_window.</font>wimpy_amReady_ask())</font>&quot;&gt;<br>
+    <font color="#000000">- a Ask if Wimpy is ready</font><br>
+  &lt;/a&gt;<br>
+  <br>
+  &lt;a href=&quot;javascript:;&quot; onClick=&quot;<font color="#CC0000">displayObject(<font color="#339900">wimpy_popout_window.</font>wimpy_gotoTrack(2))</font>&quot;&gt;<br>
+  <font color="#000000">- Play Track 2</font><br>
+  &lt;/a&gt;<br>
+  <br>
+  &lt;a href=&quot;javascript:;&quot; onClick=&quot;<font color="#CC0000">displayObject(<font color="#339900">wimpy_popout_window.</font>wimpy_getTrackInfo(2))</font>&quot;&gt;<br>
+  <font color="#000000">- Get info on the second track in the playlist.</font><br>
+  &lt;/a&gt;<br>
+  <br>
+  &lt;a href=&quot;javascript:;&quot; onClick=&quot;<font color="#CC0000">callMultipleFunctions()</font>&quot;&gt;<br>
+  <font color="#000000">- Call multiple functions at the same time. (Clear playlist, then add new items) </font><br>
+  &lt;/a&gt;<br>
+  <br>
+  &lt;a href=&quot;javascript:;&quot; onClick=&quot;<font color="#CC0000">displayInfo(<font color="#339900">wimpy_popout_window.</font>wimpy_getPlayheadSeconds())</font>&quot;&gt;<br>
+  <font color="#000000">- Get playhead position in seconds</font><br>
+  &lt;/a&gt;<br>
+  <br>
+  &lt;a href=&quot;javascript:;&quot; onClick=&quot;<font color="#CC0000">displayInfo(<font color="#339900">wimpy_popout_window.</font>wimpy_getPlayheadPercent())</font>&quot;&gt;<br>
+  <font color="#000000">- Get playhead position in percent complete</font><br>
+  &lt;/a&gt;<br>
+  <br>
+  &lt;a href=&quot;javascript:;&quot; onClick=&quot;<font color="#CC0000"><font color="#339900">wimpy_popout_window.</font>wimpy_setPlayheadSeconds(5)</font>&quot;&gt;<br>
+  <font color="#000000">- &lt;b&gt;Set&lt;/b&gt; playhead position to 5 seconds</font><br>
+  &lt;/a&gt;<br>
+  <br>
+  &lt;a href=&quot;javascript:;&quot; onClick=&quot;<font color="#CC0000"><font color="#339900">wimpy_popout_window.</font></font><font color="#CC0000">wimpy_setPlayheadPercent(35)</font>&quot;&gt;<br>
+  <font color="#000000">- &lt;b&gt;Set&lt;/b&gt; playhead position to 35 percent complete</font><br>
+  &lt;/a&gt;<br>
+  <br>
+  &lt;a href=&quot;javascript:;&quot; onClick=&quot;<font color="#CC0000">displayInfo(<font color="#339900">wimpy_popout_window.</font>wimpy_getLoadPercent())</font>&quot;&gt;<br>
+  <font color="#000000">- Get load percent</font><br>
+  &lt;/a&gt;<br>
+  <br>
+  &lt;a href=&quot;javascript:;&quot; onClick=&quot;<font color="#CC0000">displayObject(<font color="#339900">wimpy_popout_window.</font>wimpy_getLoadState())</font>&quot;&gt;<br>
+  <font color="#000000">- Get load state</font><br>
+  &lt;/a&gt;<br>
+  <br>
+  &lt;a href=&quot;javascript:;&quot; onClick=&quot;<font color="#CC0000">displayObject(<font color="#339900">wimpy_popout_window.</font>wimpy_getPlayerState())</font>&quot;&gt;<br>
+  <font color="#000000">- Get player state</font><br>
+  &lt;/a&gt;<br>
+  <br>
+  &lt;a href=&quot;javascript:;&quot; onClick=&quot;<font color="#CC0000">displayInfo(<font color="#339900">wimpy_popout_window.</font>wimpy_getTotalPlaylistItems())</font>&quot;&gt;<br>
+  <font color="#000000">- Get total playlist items</font><br>
+  &lt;/a&gt;<br>
+  <br>
+  &lt;a href=&quot;javascript:;&quot; onClick=&quot;<font color="#CC0000">displayPlaylistObject(<font color="#339900">wimpy_popout_window.</font>wimpy_getPlaylist())</font>&quot;&gt;<br>
+  <font color="#000000">- Get playlist</font><br>
+  &lt;/a&gt;<br>
+  <br>
+  <font color="#000000">- Set volume to </font><br>
+  &lt;a href=&quot;javascript:;&quot; onClick=&quot;<font color="#CC0000"><font color="#339900">wimpy_popout_window.</font>wimpy_setVolume(40)</font>&quot;&gt;<br>
+  <font color="#000000">40 percent</font><br>
+  &lt;/a&gt; : <br>
+  &lt;a href=&quot;javascript:;&quot; onClick=&quot;<font color="#CC0000"><font color="#339900">wimpy_popout_window.</font></font><font color="#CC0000">wimpy_setVolume(100)</font>&quot;&gt;<br>
+  <font color="#000000">100 percent</font><br>
+  &lt;/a&gt;<br>
+  <br>
+  <font color="#666666">&lt;!-- NOTE: Notice we are using <b>double</b> quotes around the function and <b>single</b> quotes within the arguments --&gt;</font><br>
+  <br>
+  <font color="#000000">- Turn Loop Track: </font><br>
+  &lt;a href=&quot;javascript:;&quot; onClick=&quot;<font color="#CC0000"><font color="#339900">wimpy_popout_window.</font>wimpy_setLoopTrackState('on')</font>&quot;&gt;<br>
+  <font color="#000000">on</font><br>
+  &lt;/a&gt; : <br>
+  &lt;a href=&quot;javascript:;&quot; onClick=&quot;<font color="#CC0000"><font color="#339900">wimpy_popout_window.</font>wimpy_setLoopTrackState('off')</font>&quot;&gt;<br>
+  <font color="#000000">off</font><br>
+  &lt;/a&gt;<br>
+  <br>
+  <font color="#000000">- Turn Random Playback</font> <br>
+  &lt;a href=&quot;javascript:;&quot; onClick=&quot;<font color="#CC0000"><font color="#339900">wimpy_popout_window.</font></font><font color="#CC0000">wimpy_setRandomState('on')</font>&quot;&gt;<br>
+  <font color="#000000">on</font><br>
+  &lt;/a&gt; : <br>
+  &lt;a href=&quot;javascript:;&quot; onClick=&quot;<font color="#CC0000"><font color="#339900">wimpy_popout_window.</font></font><font color="#CC0000">wimpy_setRandomState('off')</font>&quot;&gt;<br>
+  <font color="#000000">off</font><br>
+  &lt;/a&gt;<br>
+  <br>
+  <font color="#000000">- Turn Repeat Playlist: </font><br>
+  &lt;a href=&quot;javascript:;&quot; onClick=&quot;<font color="#CC0000"><font color="#339900">wimpy_popout_window.</font></font><font color="#CC0000">wimpy_setRepeatState('on')</font>&quot;&gt;<br>
+  <font color="#000000">on</font><br>
+  &lt;/a&gt; : <br>
+  &lt;a href=&quot;javascript:;&quot; onClick=&quot;<font color="#CC0000"><font color="#339900">wimpy_popout_window.</font>wimpy_setRepeatState('off')</font>&quot;&gt;<br>
+  <font color="#000000">off</font><br>
+  &lt;/a&gt;<br>
+  <br>
+  <font color="#000000">- Turn Mute: </font><br>
+  &lt;a href=&quot;javascript:;&quot; onClick=&quot;<font color="#CC0000"><font color="#339900">wimpy_popout_window.</font>wimpy_setMuteState('on')</font>&quot;&gt;<br>
+  <font color="#000000">on</font><br>
+  &lt;/a&gt; : <br>
+  &lt;a href=&quot;javascript:;&quot; onClick=&quot;<font color="#CC0000">wimpy_setMuteState('off')</font>&quot;&gt;<br>
+  <font color="#000000">off</font><br>
+  &lt;/a&gt;<br>
+  <br>
+  <font color="#666666">&lt;!-- NOTE: Notice we are using <b>single</b> quotes around the function and <b>double</b> quotes within the arguments --&gt;</font><br>
+  <font color="#666666">&lt;!-- NOTE: Yes, we flip-flopped single and double from the previous examples above, just to show you you can do it either way.--&gt;</font><br>
+  <br>
+  &lt;a href=&quot;javascript:;&quot; onclick='<font color="#CC0000"><font color="#339900">wimpy_popout_window.</font></font><font color="#CC0000">wimpy_updateInfoDisplay(&quot;My New Artist&quot;, &quot;My New Title&quot;)</font>'&gt;<br>
+  <font color="#000000">- Update Artist and Title </font><br>
+  &lt;/a&gt;</p>
+<p>(Same as Example 5, but added &quot;<font color="#CC0000"><font color="#339900">wimpy_popout_window</font></font>&quot; in front of function calls.)</p>
+<p class="codedBox"> &lt;a href=&quot;javascript:;&quot; onClick=&quot;<font color="#CC0000"><font color="#339900">wimpy_popout_window.</font>wimpy_clearPlaylist();</font>&quot;&gt;<br>
+    <font color="#000000">Clear Playlist </font><br>
+  &lt;/a&gt;<br>
+  <br>
+  &lt;a href=&quot;javascript:;&quot; onClick=&quot;<font color="#CC0000"><font color="#339900">wimpy_popout_window.</font>wimpy_appendPlaylist(addFilesA, false)</font>&quot;&gt;<br>
+  <font color="#000000">Add One Track </font><br>
+  &lt;/a&gt;<br>
+  <br>
+  &lt;a href=&quot;javascript:;&quot; onClick=&quot;<font color="#CC0000"><font color="#339900">wimpy_popout_window.</font>wimpy_appendPlaylist(addFilesC, false)</font>&quot;&gt;<br>
+  <font color="#000000">Add Multiple Tracks</font> <br>
+  &lt;/a&gt;<br>
+  <br>
+  &lt;a href=&quot;javascript:;&quot; onClick=&quot;<font color="#CC0000"><font color="#339900">wimpy_popout_window.</font>wimpy_clearPlaylist();</font>&quot;&gt;<br>
+  <font color="#000000">Clear Playlist </font><br>
+  &lt;/a&gt;<br>
+  <br>
+  &lt;a href=&quot;javascript:;&quot; onClick=&quot;<font color="#CC0000"><font color="#339900">wimpy_popout_window.</font>wimpy_loadExternalPlaylist('playlist.xml')</font>&quot;&gt;<br>
+  <font color="#000000">Load and open external playlist </font><br>
+  &lt;/a&gt;<br>
+  <br>
+  &lt;a href=&quot;javascript:;&quot; onClick=&quot;<font color="#CC0000"><font color="#339900">wimpy_popout_window.</font></font><font color="#CC0000">wimpy_clearPlaylist();</font>&quot;&gt;<br>
+  <font color="#000000">Clear Playlist </font><br>
+  &lt;/a&gt;<br>
+  <br>
+  &lt;a href=&quot;javascript:;&quot; onClick=&quot;<font color="#CC0000"><font color="#339900">wimpy_popout_window.</font>wimpy_appendPlaylist(addFilesB, true)</font>&quot;&gt;<br>
+  <font color="#000000">Add One Track (and play immediately)</font><br>
+  &lt;/a&gt;<br>
+  <br>
+  &lt;a href=&quot;javascript:;&quot; onClick=&quot;<font color="#CC0000"><font color="#339900">wimpy_popout_window.</font>wimpy_pause()</font>&quot;&gt;<br>
+  <font color="#000000">Pause </font><br>
+  &lt;/a&gt;<br>
+  <br>
+  &lt;a href=&quot;javascript:;&quot; onClick=&quot;<font color="#CC0000"><font color="#339900">wimpy_popout_window.</font>wimpy_play()</font>&quot;&gt;<br>
+  <font color="#000000">Play </font><br>
+  &lt;/a&gt;<br>
+  <br>
+  &lt;a href=&quot;javascript:;&quot; onClick=&quot;<font color="#CC0000"><font color="#339900">wimpy_popout_window.</font>wimpy_stop()</font>&quot;&gt;<br>
+  <font color="#000000">Stop </font><br>
+  &lt;/a&gt;<br>
+  <br>
+  &lt;a href=&quot;javascript:;&quot; onClick=&quot;<font color="#CC0000"><font color="#339900">wimpy_popout_window.</font></font><font color="#CC0000">wimpy_clearPlaylist()</font>&quot;&gt;<br>
+  <font color="#000000">Clear Playlist </font><br>
+  &lt;/a&gt;<br>
+  <br>
+  &lt;a href=&quot;javascript:;&quot; onClick=&quot;<font color="#CC0000"><font color="#339900">wimpy_popout_window.</font>wimpy_appendPlaylist(addFilesC, false)</font>&quot;&gt;<br>
+  <font color="#000000">Add Multiple Tracks </font><br>
+  &lt;/a&gt;<br>
+  <br>
+  &lt;a href=&quot;javascript:;&quot; onClick=&quot;<font color="#CC0000"><font color="#339900">wimpy_popout_window.</font>wimpy_gotoTrack(2)</font>&quot;&gt;<br>
+  <font color="#000000">Go to and play the second track in the playlist</font><br>
+  &lt;/a&gt;<br>
+  <br>
+  &lt;a href=&quot;javascript:;&quot; onClick=&quot;<font color="#CC0000"><font color="#339900">wimpy_popout_window.</font>wimpy_next()</font>&quot;&gt;<br>
+  <font color="#000000">Next </font><br>
+  &lt;/a&gt;<br>
+  <br>
+  &lt;a href=&quot;javascript:;&quot; onClick=&quot;<font color="#CC0000"><font color="#339900">wimpy_popout_window.</font>wimpy_prev()</font>&quot;&gt;<br>
+  <font color="#000000">Previous </font><br>
+  &lt;/a&gt;</p>
+<p>&nbsp;</p>
+<p></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><a href="http://www.wimpyplayer.net/docs/rave" target="_parent">Part of the Wimpy Rave documentation. </a><br>
+  &copy;2009 <a href="http://www.wimpyplayer.net">Plaino</a></p>
+<p><br />
+</p>
+</p>
+<p>&copy;2007 <a href="http://www.wimpyplayer.net">Plaino</a></p>
+<p>&nbsp;</p>
+<p>&nbsp; </p>
+
+</body>
+</html>

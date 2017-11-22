@@ -1,0 +1,80 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Example 7 - Other Page</title>
+
+<link href="rave_js_stylesheet.css" rel="stylesheet" type="text/css" />
+
+<script language='javascript' src='rave_js_example_javascript_playlists.js'></script>
+<script language='javascript' src='rave.js'></script>
+
+<!-- These functions are used in the "Call multiple functions" example -->
+<script language="JavaScript" >
+
+function callMultipleFunctions(){
+	wimpy_popout_window.wimpy_clearPlaylist();
+	// addFilesC exists in rave_js_example_javascript_playlists.js
+	wimpy_popout_window.wimpy_appendPlaylist(addFilesC, true);
+}
+
+
+</script>
+</head>
+
+<body>
+
+
+<b>Other Page</b>
+
+<p>You should be able to control the player from this page as well. </p>
+<p>
+
+<a href="javascript:;" onClick="wimpy_popout_window.wimpy_clearPlaylist();">
+- Clear Playlist 
+</a>
+<br />
+
+<!-- NOTE: addFilesB exists in rave_js_example_javascript_playlists.js -->
+<a href="javascript:;" onClick="wimpy_popout_window.wimpy_appendPlaylist(addFilesB, true)">
+- Add One Track (and play immediately)
+</a>
+<br />
+
+<a href="javascript:;" onClick="wimpy_popout_window.wimpy_pause()">
+- Pause 
+</a>
+<br />
+
+<a href="javascript:;" onClick="wimpy_popout_window.wimpy_play()">
+- Play 
+</a>
+<br />
+
+<a href="javascript:;" onClick="wimpy_popout_window.wimpy_stop()">
+- Stop 
+</a>
+
+</p>
+
+<p>If you are unable to control the player using the links on this page, check the following:</p>
+<p>- This feature is set up so that the popped up player &quot;polls&quot; the <b>browser window instance</b> that popped up the player every 1000 milliseconds (1 second). If you clicked a link on this page before 1 second elapsed,, chances are that the polling has not yet occured for THIS page. Wait at least one second and try again. You can change the polling frequency to a lower number by editing the line within <font color="#CC0000"><b>rave.js</b></font> that reads:</p>
+<blockquote>
+<p class="codedBox">setInterval( notifyOpener, 1000 ); <br>
+  <font color="#333333">... change &quot;1000&quot; to a lower number of milliseconds. We do not recommend going any lower than 500.</font> <br>
+  <font color="#333333">Example:</font><br>
+setInterval( notifyOpener, 500 ); </p>
+</blockquote>
+<p>- You are not trying to control a player embedded in a page that you accessed directly. This feature (controlling the player from another page) only works when the <b>browser window instance</b> that contains the page that popped up the player has not changed. In other words, you did not do something like: Browser &gt; File &gt; New Window &gt; Then navigate to another page that contains Rave. This feature is set up for normal page navigation, where the intent is that the end user, while surfing your site, clicks a link on a page to open Rave as a pop up window, then continues to view the remainder of the page and decides to click another link on that same page, which leads them to another page on your site.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><a href="http://www.wimpyplayer.net/docs/rave" target="_parent">Part of the Wimpy Rave documentation. </a><br>
+  &copy;2009 <a href="http://www.wimpyplayer.net">Plaino</a></p>
+<p><br />
+</p>
+</p>
+<p>&copy;2007 <a href="http://www.wimpyplayer.net">Plaino</a></p>
+<p></p>
+<h1>&nbsp;</h1>
+</body>
+</html>
