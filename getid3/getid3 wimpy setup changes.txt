@@ -1,0 +1,10 @@
+============================
+getid3.php
+============================
+
+Comment out lines 106 -> 135 (Commented out Windows stuff 'GETID3_HELPERAPPSDIR')
+
+
+
+
+
