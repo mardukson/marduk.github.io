@@ -1,0 +1,27 @@
+<html>
+<head>
+<script language="Javascript" src="top.js"></script>
+<script language="Javascript" src="layer.js"></script>
+<script language="Javascript" src="tools.js"></script>
+<script language="Javascript">
+_lab = parent._lab
+writeStyle(".noBold{font-weight:normal}")
+</script>
+</head>
+<body class="Thumb" scroll="auto" marginwidth="0" marginheight="0" topmargin="0" leftmargin="0">
+
+<script language="Javascript">
+var s=table(null,"class='noBold' cellpadding='5' width=480 class=Thumb")
+s+='<tr><td colspan=2 class=Thumb align="center">' + _lab.aboutTitle + '</td></tr>'
+s+='<tr><td width="100%" class="Normal">' + _lab.engineVersion + '&nbsp;' + _ktop._docVersion+ '<br>' + _lab.author + '&nbsp;'+_ktop.parent.Generator+'</td><td align=center><img border=0 src="'+_neu+"logo.gif"+'"></td></tr>'
+s+='<tr><td colspan=2 class="Normal">' + _lab.copyright1 + '</td></tr>'
+s+='<tr><td colspan=2 class="Normal">' + _lab.copyright2 + '</td></tr>'
+s+='<tr><td colspan=2 class="Normal">' + _lab.link + '</td></tr>'
+s+='</table>'
+//s+=imgLyr(_neu+"logo.gif",400,15)
+document.write(s)
+</script>
+
+</body>
+</html>
+

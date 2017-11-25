@@ -1,0 +1,41 @@
+<html>
+<!--
+Copyright (c) 1997-2002, KeeBoo Corporation. All rights reserved.
+Copyright application on progress at the Copyright Office.
+This source code is the property of KeeBoo Corporation,
+it cannot be reused, modified or published without prior 
+written consent from KeeBoo Corporation.
+KeeBoo and the KeeBoo logo are trademarks or registered
+trademarks of KeeBoo Corporation.
+-->
+
+<SCRIPT language="javascript" src="top.js" ></SCRIPT>
+<SCRIPT language="javascript" src="layer.js"></SCRIPT>
+<HEAD>
+<SCRIPT language="javascript">
+document.write("<style type='text/css'>"+"#theBody{margin-top:0px}A{text-decoration:none;}"+_main._sty['.Emphasis']+_main._sty['.EmphasisBold']+_main._sty['BODY']+_main._sty['.Normal']+"</STYLE>")
+</SCRIPT>
+</HEAD>
+<BODY id=theBody>
+<SCRIPT language="javascript">
+
+_lab=parent._lab
+function writeInLayer(text)
+{
+	reWriteLayer(text, "results")
+}
+
+var useSp=_ktop._ie||_ktop._moz
+var str=""
+str+=((useSp?"<SPAN ":"<LAYER ")+"id=results>")
+if (_ktop._searchWord!="")
+{
+	str+="<SPAN class=EmphasisBold>"+_ktop.formatString(_ktop._found.length<=1?_lab.findCountOnePage:_lab.findCountSevPages,_ktop._found.length)+"<BR>&nbsp;<BR></SPAN>"
+	str+=parent.getDisplayResult(-1)
+}
+for (var i=0; i<_ktop._found.length;i++) str+=parent.getDisplayResult(_ktop._found[i])
+str+=((useSp)?"</SPAN>":"</LAYER>")
+document.write(str)
+</SCRIPT>
+</BODY>
+</HTML>

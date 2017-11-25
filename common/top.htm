@@ -1,0 +1,175 @@
+<html>
+<head>
+<script language="Javascript" src="top.js"></script>
+<script language="Javascript" src="layer.js"></script>
+<script language="Javascript" src="tools.js"></script>
+<script language="Javascript">
+var _lab = parent._lab
+var about = _ktop._initAbout
+var _x=10, _y=(_macIE&&_ie4)?-2:10
+
+function cbabout() {
+	if (!about) {
+		parent.frames["fmiddle"].location.href = "about.htm"
+		zindexThumbnail(1000,"about")
+		zindexThumbnail(10,"disclaimer")
+
+		showLayer(false,"DivaboutLight")
+		showLayer(true,"DivaboutBold")
+
+		showLayer(true,"DivdisclaimerLight")
+		showLayer(false,"DivdisclaimerBold")
+		
+		about = true
+	}
+}
+function cbdisclaimer() {
+	if (about) {
+		parent.frames["fmiddle"].location.href = "disclaimer.htm"
+		zindexThumbnail(1000,"disclaimer")
+		zindexThumbnail(10,"about")
+
+		showLayer(false,"DivdisclaimerLight")
+		showLayer(true,"DivdisclaimerBold")
+
+		showLayer(true,"DivaboutLight")
+		showLayer(false,"DivaboutBold")
+		
+		about = false
+	}
+}
+function writeThumbnail(label) {
+	var str=''
+	for (var i=1; i<=2; i++) {
+		str += '<span id="Div'+label+(i==1?'Light':'Bold')+'" class="abs">'
+		str += '<table border="0" cellpadding="0" cellspacing="0" class="Thumb'+(i==1?'Light':'')+'">'
+		str += '<tr valign="top">'
+		str += '<td>' + corner("topleft") + '</td>'
+		str += '<td class="Thumb'+(i==1?'Light':'')+'"><nobr>' + _lab[label] + '</nobr></td>'
+		str += '<td>' + corner("topright") + '</td>'
+		str += '</tr>'
+		str += '<tr><td height=5 colspan=3 class="Thumb'+(i==1?'Light':'')+'">'+box(1,1)+'</td></tr>'
+		str += '</table>'
+		str += '</span>'
+	}
+	str += '<span id="Div'+label+'Img"></span>'
+
+	return str
+}
+function writeBorder() {
+	var t
+	
+	if			(_macIE)			t=496
+	else if (_mac&&_ns4)	t=492
+	else									t=480
+	var str=''
+	str += '<span id="DivBorder">'
+	str += table(null,"width="+t)+'<tr>'
+	str += '<td>'+corner("topleft")+'</td>'
+	str += '<td class="Thumb" width="'+(_moz?'97%':'100%')+'">'+box(1,1)+'</td>'
+	str += '<td>'+corner("topright")+'</td>'
+	str += '</tr></table>'
+	str += '</span>'
+
+	str += '<span id="DivHidden">'
+	str += table(null,"width="+t)+'<tr>'
+	str += '<td height=2 bgcolor="'+_main.bg+'" width="100%">'+box(1,1)+'</td>'
+	str += '</tr></table>'
+	str += '</span>'
+	return str
+}
+function reWriteLink(label) {
+var lh, lw
+
+	if (_ie4&&!_mac) {
+		reWriteLayer('<nobr>' + _lab[label] + '</nobr>', "dum1")
+		reWriteLayer('<nobr>' + _lab[label] + '</nobr>', "dum2")
+		
+		lw=layerWidth("dum2")
+		lh=layerHeight("dum1")
+	}
+	else {
+		lw=layerWidth("Div"+label+"Bold")
+		lh=layerHeight("Div"+label+"Bold")
+	}
+
+	var str=''
+	str += '<a class="guiLink" href="javascript:cb' + label + '()" onfocus="this.blur()">'
+	str += box(lw,lh,null,_hand)
+	str += '</a>'
+	reWriteLayer(str, "Div"+label+"Img")
+}
+function moveThumbnail(l,t,label) {
+	moveLayer("Div"+label+"Light",l,t)
+	moveLayer("Div"+label+"Bold",l,t)
+	moveLayer("Div"+label+"Img",l,t)
+}
+function showThumbnail(show,label) {
+	showLayer(show,"Div"+label+"Light")
+	showLayer(show,"Div"+label+"Bold")
+	showLayer(show,"Div"+label+"Img")
+}
+function zindexThumbnail(zindex,label) {
+	zindexLayer(zindex,"Div"+label+"Light")
+	zindexLayer(zindex,"Div"+label+"Bold")
+}
+function cbLoad() {
+
+	reWriteLink("about")
+	var ofs=((_ie4&&!_mac)?layerWidth("dum2")+15:layerWidth("DivaboutBold"))
+	reWriteLink("disclaimer")
+
+	moveThumbnail(_x,_y,"about")
+	showThumbnail(true,"about")
+
+	moveThumbnail(_x+ofs+2,_y, "disclaimer")
+	showThumbnail(true,"disclaimer")
+
+	var t=(_macIE&&_ie4?11:25)
+	
+	moveLayer("DivBorder", 0, t)
+	moveLayer("DivHidden", 0, t-2)
+
+	about=!about
+	if (about) cbdisclaimer()
+	else cbabout()
+}
+writeStyle()
+</script>
+<style type="text/css">
+.abs{position:absolute}
+#DivaboutLight { position:absolute; left:0px; top:0px; visibility:hidden; z-index:999; }
+#DivaboutBold { position:absolute; left:0px; top:0px; visibility:hidden; z-index:999; }
+#DivaboutImg { position:absolute; left:0px; top:0px; visibility:hidden; z-index:1000; }
+#DivdisclaimerLight { position:absolute; left:0px; top:0px; visibility:hidden; z-index:10; }
+#DivdisclaimerBold { position:absolute; left:0px; top:0px; visibility:hidden; z-index:10; }
+#DivdisclaimerImg { position:absolute; left:0px; top:0px; visibility:hidden; z-index:1000; }
+<!--
+#DivBorder { position:absolute; left:0px; top:25px; z-index:500; }
+#DivHidden { position:absolute; left:0px; top:23px; height:2px; z-index:500; }
+-->
+</style>
+</head>
+
+<body marginwidth="0" marginheight="0" topmargin="0" leftmargin="0" onload="setTimeout('cbLoad()',5)">
+
+<script>
+
+var S=''
+S += writeThumbnail('about')
+S += writeThumbnail('disclaimer')
+S += writeBorder()
+document.write(S)
+
+if (_ie4&&!_mac) {
+	var s=''
+	s += '<span class="Thumb" id="dum1" style="position:absolute; visibility:hidden;"></span>'
+	s += '<span class="Thumb" id="dum2" style="position:relative; visibility:hidden;"></span>'
+	document.write(s)
+}
+
+</script>
+
+</body>
+
+</html>

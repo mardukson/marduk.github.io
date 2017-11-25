@@ -1,0 +1,50 @@
+<html>
+<!--
+Copyright (c) 1997-2002, KeeBoo Corporation. All rights reserved.
+Copyright application on progress at the Copyright Office.
+This source code is the property of KeeBoo Corporation,
+it cannot be reused, modified or published without prior 
+written consent from KeeBoo Corporation.
+KeeBoo and the KeeBoo logo are trademarks or registered
+trademarks of KeeBoo Corporation.
+-->
+<HEAD>
+<SCRIPT src="top.js" language="javascript"></SCRIPT>
+<SCRIPT language="javascript">
+calcSide()
+if (_page!=null) document.write("<TITLE>"+_ktop.book.title+" - "+_ktop.getPageTitle(_page)+"</TITLE>")
+</SCRIPT>
+</HEAD>
+<SCRIPT language="javascript">
+var h=0,hasBanner,currentIdx=1,_kfirst=_ktop._dyn?_ktop.parent:_ktop
+if (_kfirst._BrandingImages!=_NULL)
+{
+	h=0;hasBanner=_kfirst._NbTocBanners&&(_kfirst._NbTocBanners>0)
+	for (var i=1; i<=_kfirst._NbTocBanners;i++) h=Math.max(h,_kfirst._BrandingImages['tocbanner'+i].Height)
+}
+else
+{
+	var brand=_ktop.book.branding,tocPath=brand.tocPath
+	h=(brand.tocH==0?64:brand.tocH);hasBanner=(tocPath!=_NULL)&&(tocPath!="")
+}
+//if (_ktop._preloadPage||_ktop._searchPage) hasBanner=false
+hasBanner=false
+if (h!=0)
+	h+=(_ktop._ns&&!_ktop._moz&&h!=0?14:8)
+var rows,_common=_main._common
+if (_page!=null)
+{
+var pg=book.pages[_page]
+var u=pg.url
+if (u&&(book.extendedUrl=="mode1")) u=u+((u.indexOf("?")>=0)?"&":"?")+"BookID="+book.id+"&PageID="+p.id
+}
+if (!_main._ns||hasBanner||(_side=="undefined")) rows="*"+(hasBanner?","+h:"")+(_side=="undefined"?",32":"")
+else rows="100%,*"
+var s="<frameset rows='"+rows+"' border='0' frameborder='no' framespacing='0'>"
+s+="<frame name='treelist' src='"+(u?u:_common+"../systempages/contents.htm ")+"' marginheight='10' marginwidth='5'>"
+if (hasBanner) s+="<frame src='banner"+((_ktop._dyn&&_ktop._ie&&!_ktop._ie4&&!_ktop._mac)?"2":"")+".htm' marginheight='0' marginwidth='0' scrolling='no'>"
+if (_side=="undefined") s+="<frame src='tocbuttons.htm' marginheight='0' marginwidth='5' scrolling='no'>"
+if (rows=="100%,*") s+="<frame src='"+_common+"empty.htm'>"
+document.write(s+"</frameset>")
+</SCRIPT>
+</html>

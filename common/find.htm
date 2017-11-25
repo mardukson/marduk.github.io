@@ -1,0 +1,100 @@
+<HTML>
+<!--
+Copyright (c) 1997-2002, KeeBoo Corporation. All rights reserved.
+Copyright application on progress at the Copyright Office.
+This source code is the property of KeeBoo Corporation,
+it cannot be reused, modified or published without prior 
+written consent from KeeBoo Corporation.
+KeeBoo and the KeeBoo logo are trademarks or registered
+trademarks of KeeBoo Corporation.
+-->
+<HEAD>
+<SCRIPT src="layer.js" language="javascript"></SCRIPT>
+<SCRIPT src="top.js" language="javascript"></SCRIPT>
+<SCRIPT src="tools.js" language="javascript"></SCRIPT>
+<SCRIPT src="progress.js" language="javascript"></SCRIPT>
+<SCRIPT LANGUAGE="javascript">
+_lab=parent._lab
+writeStyle("#theForm{margin:8px;}"+(_ns4?"":"#textFind{width:180px}"))
+var theProgress,logoPath="",logoClick="",logoTip,_first=_ktop._dyn?_ktop.parent:_ktop
+
+function getCheck(id,str,sel,cb,grayed)
+{
+	if (grayed) sel=false
+	return "<NOBR><INPUT "+attr("onclick",cb)+" class=Dlg type=checkbox name='"+id+"' id='"+id+"' "+(sel?" checked":"")+" "+(grayed&&_ie?" disabled":"")+"><SPAN class=Dlg>"+(_ie ? "<LABEL class=Dlg for='"+id+"'>" : "")+_lab[str]+(_ie ? "</LABEL>" : "")+"</SPAN></NOBR>"
+}
+
+function getVal()
+{
+	if (_moz) return layerElem("textFind").value
+	return document.forms[0].textFind.value
+}
+
+function setVal(val)
+{
+	if (_moz) layerElem("textFind").value=val
+	document.forms[0].textFind.value=val
+}
+
+if (_first._BrandingImages!=_NULL)
+{
+	var desc=_first._BrandingImages['indexlogo1']
+	
+	if (desc)
+	{
+		logoPath=_ktop.brandingUrl(desc,"IndexLogo");logoClick=_ktop.brandingClickUrl(desc,"IndexLogo");logoTip=desc.ToolTip
+	}
+}
+else with(_ktop.book)
+{
+	logoPath=branding.indexPath;logoClick=branding.indexUrl;logoTip=branding.idxTip
+}
+
+function topFrame()
+{
+	var grayed=_ktop.book.intCount==0
+	if (grayed) _ktop._findInPages=false
+
+	var txtWidth=_ns4?" size=12":""
+	var s=table("Thumb"," width='100%'")
+	s+="<TR><TD>" + corner("topleft",0) + "</TD><TD align=right>" +table("Thumb")+"<TR><TD>"+ corner("topright",0) + "</TD></TR></TABLE></TD></TR>"
+	s+="<TR><TD><FORM id=theForm name=theForm onsubmit='parent.beginSearchCB();return false'>"
+	s+="<TABLE class=Thumb cellspacing=0 cellpadding=4 border=0><TR valign=bottom>"
+	s+="<TD class=Thumb>" + _lab['indexFind'] + "&nbsp;<INPUT "+txtWidth+" class=Inputs onblur='_disableKeyEvent=false' onfocus='_disableKeyEvent=true' type=text name=textFind id=textFind value=\""+_ktop._searchWord+"\"></TD>"
+	s+="<TD><SPAN class=Thumb>"+_lab["findIn"]+"</SPAN></TD>"
+	s+="<TD>"+getCheck("titles","findTit",_ktop._findInTitles,"_ktop._findInTitles=!_ktop._findInTitles")+"<BR>"+getCheck("docs","findDoc",_ktop._findInPages,"_ktop._findInPages=!_ktop._findInPages",grayed)+"</TD>"
+	s+="</TR></TABLE></FORM></TD><TD class=Thumb valign=right>"+box(2,84)+"</TD></TR>"
+	s+="<TR><TD width=100%>"+table("Thumb"," width='100%'")+"<TR><TD>"
+	s+=table("Thumb")+"<TR><TD colspan=2>"+corner("topleft",1)+"</TD></TR>"
+	s+="<TR><TD>"+box(6,55)+"</TD><TD class=InnerThumb>"+box(8,59)+"</TD></TR>"
+	s+="<TR><TD colspan=2>"+corner("botleft",1)+"</TD></TR></TABLE></TD>"
+	s+="<TD width=100%>"+table("Thumb"," width='100%' height=76")
+	s+="<TR height=73><TD class=InnerThumb>"+table("InnerThumb"," width=100% ")+"<TR><TD>"+box(210+(_ns?60:0),73)+"</TD><TD>"
+	s+=box(100,62)
+	s+="</TD></TR></TABLE></TD></TR>"
+	s+="<TR height=3><TD class=Thumb>"+box(1,3)+"</TD></TR></TABLE></TD></TR></TABLE></TD><TD>"
+	s+=table("Thumb")+"<TR><TD colspan=2>"+corner("topright",1)+"</TD></TR>"
+	s+="<TR><TD class=InnerThumb>"+box(8,55)+"</TD><TD>"+box(6,59)+"</TD></TR>"
+	s+="<TR><TD colspan=2>"+corner("botright",1)+"</TD></TR></TABLE></TD></TR></TABLE>"
+	document.write(s)
+}
+
+</SCRIPT>
+</HEAD>
+<BODY id=theBody>
+<SCRIPT LANGUAGE="javascript">
+topFrame()
+document.write(table(_NULL," background='"+_neu+"dot.gif' width=100%")+"<TR><TD>"+box(6,12)+"</TD></TR></TABLE></TD></TR></TABLE>")
+</SCRIPT>
+<SCRIPT LANGUAGE="javascript">
+var y=118+(_ie?15:9)
+if (_ie4&&_macIE) y-=10
+
+button("indexStop","parent.stopSearchCB()",28,y-10,false,"buttonStop")
+button("indexStart","parent.beginSearchCB()",28,y-10,true,"buttonStart")
+button("indexClear","parent.clearIndexCB()",123,y-10)
+button("indexClose","parent.close()",203,y-10)
+theProgress=new progressBar(28,y+21)
+
+</SCRIPT>
+</BODY>

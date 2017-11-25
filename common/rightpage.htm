@@ -1,0 +1,9 @@
+<html>
+<script language=javascript>
+if (parent.onLoadPageCB) 
+	document.write('<frameset frameborder=no border=0 framespacing=0 rows="'+(document.layers?"100%,*":"*")+'" onload="parent.onLoadPageCB(\'right\',self.frames[0])"><frame name="page" src="'+parent._page.right.url+'">'+(document.layers?'<frame src="empty.htm">':'')+'</frameset>')
+else
+	document.write('<body></body>')
+</script>
+</html>
+

@@ -1,0 +1,189 @@
+<HTML>
+<!--
+Copyright (c) 1997-2002, KeeBoo Corporation. All rights reserved.
+Copyright application on progress at the Copyright Office.
+This source code is the property of KeeBoo Corporation,
+it cannot be reused, modified or published without prior 
+written consent from KeeBoo Corporation.
+KeeBoo and the KeeBoo logo are trademarks or registered
+trademarks of KeeBoo Corporation.
+-->
+
+<SCRIPT LANGUAGE="javascript" SRC="layer.js"></SCRIPT>
+<SCRIPT LANGUAGE="javascript" SRC="top.js"></SCRIPT>
+<SCRIPT LANGUAGE="javascript" SRC="tools.js"></SCRIPT>
+<SCRIPT LANGUAGE="javascript">
+<!--
+document.write("<SC"+"RIPT language=\"javascript\" src=\""+_main._localized+"pref.js\"><\/SC"+"RIPT>");
+//-->
+</SCRIPT>
+<HEAD>
+
+<SCRIPT LANGUAGE="javascript">
+document.write("<TITLE>"+_lab.title+"</TITLE>")
+writeStyle("#form1{margin:0px;}#theBody{margin:10px;}#langName {width:150px;} #delay{width:40px}")
+_disableKeyEvent=true
+
+var _langs=new Object
+_langs.deu="Deutsch"
+_langs.enu="English"
+_langs.esp="Espa&ntilde;ol"
+_langs.fra="Fran&ccedil;ais"
+_langs.ita="Italiano"
+
+var _present=new Object
+_present.slideShow=(_ktop.book.slideShow!=null)
+_present.flipAnimation=(_ktop.book.flip==2)&&_main.hdlAnimation
+
+var _old=new Object
+_old.lang=_ktop._langName.toLowerCase()
+_old.delay=_ktop.book.slideShow?_ktop.book.slideShow.timer:_ktop._slideShowTimer
+_old.flipAnimation=_ktop.book.flipAnimation.enable
+
+var _new=new Object
+_new.lang=_old.lang
+_new.delay=_old.delay
+_new.flipAnimation=_old.flipAnimation
+
+function getCheck(id,str,sel,cb)
+{
+	if(_main.hdlAnimation)
+		document.write("<INPUT class=Dlg onclick='"+cb+"'type='checkbox' name='"+id+"' id='"+id+"' "+(sel?" checked":"")+"><SPAN class='Dlg'>"+(_ie ? "<LABEL for='"+id+"'>" : "")+str+(_ie ? "</LABEL>" : "")+"&nbsp;&nbsp;</SPAN>")
+}
+
+function okCB()
+{
+	var frm=_moz?layerElem("form1"):document.forms[0],skinLyr=frm.skinList,langLyr=frm.langList
+	with (_new)
+	{
+		if (0&&_main.parent.scriptingEngine!="htm") {
+			lang=frm.langName.options[frm.langName.selectedIndex].value
+		}
+		
+		if (_present.slideShow)
+		{
+			delay=parseInt(frm.delay.value)
+			if (typeof delay!="number") delay=1
+			if (delay<=0) delay=1
+			if (delay>99) delay=99
+		}		
+		_ktop.setCookie("DynKeeBookParam","language="+lang+"&flipAnimation="+(flipAnimation==true?1:0)+"&slideshowinterval="+delay,30)
+
+		_ktop._slideShowTimer=delay
+		if (_ktop.book.slideShow) _ktop.book.slideShow.timer=delay
+
+		_ktop.book.flipAnimation.enable=flipAnimation
+		_main.isAnimated=flipAnimation
+		
+		if (lang!=_old.lang)
+		{
+			var loc=_main.document.location.pathname
+			if (_moz)
+			{
+				locSplit=loc.split("?")
+				if (locSplit.length>0) loc=locSplit[0]
+			}
+			_main._closePopups=false;_main.document.location.replace(loc+"?language="+lang+"&skin="+_ktop._lookName.toLowerCase()+"&pageMode="+_main._Book.mode+"&startPageNumber="+(_main._Book.page+1)+"&toolbarMode="+_main._Book.toolbar)
+		}
+	}
+	top.window.close()
+}
+
+</SCRIPT>
+</HEAD>
+<BODY>
+
+<TABLE cellpadding=0 cellspacing=0 width="100%"><TR><TD align=center>
+
+<TABLE class=Thumb width='100%' border='0' cellpadding=0 cellspacing=0>
+<TR valign=top><TD width="7" align="left">
+<SCRIPT language="javascript">document.write(corner("topleft"))</SCRIPT>
+</TD><TD>
+<SCRIPT language="javascript">document.write(box(1,7))</SCRIPT>
+</TD><TD width="7" align=right>
+<SCRIPT language="javascript">document.write(corner("topright"))</SCRIPT>
+</TD>
+</TR>
+
+<TR><td class="Thumb"><SCRIPT language="javascript">document.write(box(1,7))</SCRIPT></td><TD>
+
+<FORM onsubmit="okCB();return false" id='form1' name='form1'>
+
+
+<TABLE class=Thumb width='100%' border='0' cellpadding="10" cellspacing='0'>
+	<TR><TD>
+		<SCRIPT language="javascript">
+		if (_present.flipAnimation) getCheck("anim",_lab.anim,_old.flipAnimation,"_new.flipAnimation=!_new.flipAnimation")
+		</SCRIPT>
+	</TD></TR>
+
+	<TR><TD>
+		<SPAN class=Dlg>
+			<SCRIPT language="javascript">
+				if (_present.slideShow)
+				{
+					var s=table("Thumb")+"<tr><td valign='middle'><span class='Dlg'>"+_lab.delay+"</span></td></tr></table>"
+					var txtWidth=_ns4?" size=2":""
+					s+=table("Thumb")+"<tr><td><span class='Dlg'>&nbsp;</span></td><td><INPUT maxlength='2' "+txtWidth+" class=Inputs type='text' name='delay' id='delay' value=\""+_old.delay+"\"></td><td><span class='Dlg'>&nbsp;"
+					s+=_lab.seconds+"</span></td></tr></table>"
+					document.write(s)
+				}
+				</SCRIPT>
+		</SPAN>
+	</TD></TR>
+
+	<SCRIPT language="javascript">
+	if (0 && _main.parent.scriptingEngine!="htm") {
+		var s=""
+		s+="<TR><TD>"
+		s+="<SPAN class=Dlg>"+_lab.lang+"</SPAN><BR>"
+		s+="<SELECT size='1' class='Inputs' id='langName' name='langName'>"
+		for (var i in _langs) 
+			if (_ktop._dyn||(i==_old.lang))
+				s+="<OPTION value='"+i+"'"+(i==_old.lang?" selected":"")+">"+_langs[i]+"</OPTION>"
+		s+="</SELECT>"
+		s+="</TD></TR>"
+		document.write(s)	
+	}
+	</SCRIPT>
+
+</TABLE>
+</FORM>
+</TD><td class="Thumb">
+<SCRIPT language="javascript">document.write(box(1,7))</SCRIPT>
+</td>
+</TR>
+
+
+<TR>
+<TD align=right colspan=3>
+<TABLE class=Thumb cellspacing=0 cellpadding=5 border=0>
+<TR>
+<TD>
+<SCRIPT language="javascript">button("OK","okCB()")</SCRIPT>	
+</TD>
+<TD>
+<SCRIPT language="javascript">button("Cancel","top.window.close()")</SCRIPT>
+</TD>
+</TR>
+</TABLE>
+</TD>
+</TR>
+<TR valign=bottom>
+
+<TD width="7" align="left">
+<SCRIPT language="javascript">document.write(corner("botleft"))</SCRIPT>
+</TD>
+<TD>
+<SCRIPT language="javascript">document.write(box(1,7))</SCRIPT>
+</TD>
+<TD align=right width="7">
+<SCRIPT language="javascript">document.write(corner("botright"))</SCRIPT>
+</TD>
+</TR>
+</TABLE>
+
+</td></tr></TABLE>
+</BODY>
+
+</HTML>

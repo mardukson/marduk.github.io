@@ -1,0 +1,220 @@
+<HTML>
+<!--
+Copyright (c) 1997-2002, KeeBoo Corporation. All rights reserved.
+Copyright application on progress at the Copyright Office.
+This source code is the property of KeeBoo Corporation,
+it cannot be reused, modified or published without prior 
+written consent from KeeBoo Corporation.
+KeeBoo and the KeeBoo logo are trademarks or registered
+trademarks of KeeBoo Corporation.
+-->
+<HEAD>
+<LINK rel="stylesheet" type="text/css" href="drag.css">
+<SCRIPT language="javascript" src="top.js"></SCRIPT>
+<SCRIPT language="javascript" src="layer.js"></SCRIPT>
+<SCRIPT language="javascript" src="drag.js" ></SCRIPT>
+<SCRIPT LANGUAGE="javascript">
+<!--
+document.write("<SC"+"RIPT language=\"javascript\" src=\""+_main._localized+"photo.js\"><\/SC"+"RIPT>");
+//-->
+</SCRIPT>
+<SCRIPT language="javascript">
+calcSide()
+var _resize=(_side!="undefined")&&(_item.fit),_w,_h,_url,_pg,_loaded=false,_img
+var _cap=_item.cap,_top,_left,_right,_bottom,margW=30,margH=30
+var col=_item.color,patt=_item.pattern_url
+
+if (_cap!=_NULL) 
+{
+	_top=_cap.top;_left=_cap.left;_right=_cap.right;_bottom=_cap.bottom
+	if (_left!=_NULL) margW+=_left.constr
+	if (_right!=_NULL) margW+=_right.constr
+	if (_top!=_NULL) margH+=_top.constr
+	if (_bottom!=_NULL) margH+=_bottom.constr
+}
+
+col=col?col:_ktop.book.color
+patt=patt?patt:_ktop.book.pattern_url
+
+if (_page!=_NULL)
+{
+	_pg=_ktop.book.pages[_page]
+	if (_pg&&(_pg.internal=="pict"))
+	{
+		if (_pg.file) _url=_ktop._contents+_pg.file
+		else _url=_pg.url
+		document.write("<TITLE>"+_ktop.book.title+" - "+_pg.title+"</TITLE>")
+	}
+}
+document.write('<style type="text/css">BODY{'+(((patt!=null)&&!_ns4)?"background-image:url("+patt+");":"")+'background-color:'+(col?col:_main.bg)+"}"+_main._sty[".Normal"]+'</style>')
+function popWin()
+{
+	if (_side!="undefined")
+	{
+		if ((!_ns4)&&(_side!="undefined")&&(_img!=null)) _img.style.cursor=isResized()?_hand:"default"
+		if (isResized()||_ns4) _ktop.popWin(_page);
+	}
+	else
+	{
+		self.close()
+	}
+	return false;
+}
+function nothing(){}
+function tabTxt(s,w){return "<table border=0 cellspacing=10 cellpadding=0 "+attr("width",w)+"><tr valign=middle><td align=left><span class=Normal>"+s+"</span></td></tr></table>"}
+
+function overCB()
+{
+	if ((!_ns4)&&(_side!="undefined")&&(_img!=null))
+	{
+		_img.style.cursor=isResized()?_hand:"default"
+		_img[_alt]=isResized()?_lab.photoTip:""
+	}
+		
+	status="";
+	return true
+}
+
+var _hiddenImg=(_macIE||_ns4)
+
+function writeElem()
+{
+	if (!_url) return
+	calcSize()
+	if ( ((_side=="undefined")||!_pg.fit)&&((_pg.w!=null)&&(_pg.h!=null))){_w=_pg.w;_h=_pg.h}
+	
+	var lnk=true, s=""
+	s+="<TABLE width='100%' height=100% border='0' cellpadding='0' cellspacing='0'>"
+	s+="<tr valign='middle'>"
+	if ((_side!="undefined")&&(_left!=_NULL)) s+="<td align=right>"+tabTxt(_left.txt,_left.constr)+"</td>"
+	
+	s+="<td align='center'>"
+	if ((_side!="undefined")&&(_top!=_NULL)) s+=tabTxt(_top.txt)
+	
+	if (lnk) s+="<a href='javascript:nothing()' onclick='return popWin()' onmouseover='overCB()' onmouseout='status=\"\";return true'>"
+	s+="<img "+attr(_alt,(_side!="undefined"?_lab.photoTip:_lab.closeTip))+attr("width",_w)+attr("height",_h)+" id='theImg' border='0' src=\""+_url+"\">"
+	if (lnk) s+="</a>"
+
+	if ((_side!="undefined")&&(_bottom!=_NULL)) s+=tabTxt(_bottom.txt)
+	s+="</td>"
+	
+	if ((_side!="undefined")&&(_right!=_NULL)) s+="<td align=left>"+tabTxt(_right.txt,_right.constr)+"</td>"
+	s+="</tr>"
+	
+	s+="</table>"
+
+	document.write(s)
+	document.close()
+}
+
+function initCheck()
+{
+	_img=document.images[0];_loaded=true
+	if (_moz) setInterval("resizeCB()",250)
+	if (_ie) resizeCB()
+	if (_w==_NULL) setTimeout("getSize()",150)
+	if (_ns4) setTimeout('_handleResize=true',400)
+}
+
+
+function getSize()
+{
+	if (_img)
+	{
+		if (_ie&&(!_img.complete||_img.width==0))
+		{
+			setTimeout("getSize()",250);return
+		}
+
+		_w=_img.width;
+		_h=_img.height;
+
+		if (_pg.w==_NULL) _pg.w=_w
+		if (_pg.h==_NULL) _pg.h=_h
+		resize()
+	}
+}
+
+function isResized()
+{
+	if (_loaded)
+	{
+		var theImg=document.images[0];
+		var w=(_resize?_pg.w:theImg.width),h=(_resize?_pg.h:theImg.height)
+		
+		if ((w!=null)&&(w>winWidth()-margW)) return true
+		if ((h!=null)&&(h>winHeight()-margH)) return true
+		return false
+	}
+	return true
+}
+
+function calcSize()
+{
+	if (_pg&&_resize)
+	{
+		if (_pg.w==_NULL||_pg.w==0) return
+		var sizeW,sizeH
+
+		if (_resize&&!_loaded)
+		{
+			sizeW=_main.getPageWidth(_side)
+			sizeH=_main.getPageHeight()
+		}
+
+		if (((sizeW==_NULL)&&_loaded)||_ns) sizeW=(_ns?window.innerWidth:document.body.offsetWidth)
+		if (((sizeH==_NULL)&&_loaded)||_ns) sizeH=(_ns?window.innerHeight:document.body.offsetHeight)
+		
+		if (sizeW==_NULL) sizeW=_pg.w+margW
+		if (sizeH==_NULL) sizeH=_pg.h+margH
+		sizeW=Math.max(0,sizeW-margW);sizeH=Math.max(0,sizeH-margH);_w=_pg.w;_h=_pg.h
+
+		if (_pg.w>sizeW)
+		{
+			_w=sizeW;_h=_pg.h*sizeW/_pg.w
+		}
+
+		if (_h>sizeH)
+		{
+			var oldH=_h;_h=sizeH;_w=_w*sizeH/oldH
+		}
+		_w=Math.round(_w);_h=Math.round(_h);
+	}
+}
+
+var _handleResize=false
+function resizeCB()
+{
+	if (_ns4) if (!_handleResize) return
+	resize()
+}
+
+var test=true
+function resize()
+{
+	if (!_resize) return
+	if (_url&&_loaded&&(_w!=_NULL))
+	{
+		calcSize()
+		if ((_img.width!=_w)||(_img.height!=_h))
+		{
+			if (_ns4) document.location.replace(document.location.href)
+			else
+			{
+				_img.width=_w;_img.height=_h
+			}
+		}
+		for ( var id in KBStkrs )
+			KBmoveCB(null,id)
+	}
+}
+
+if (!_moz) window.onresize=resizeCB
+if (_ns4) window.captureEvents(Event.RESIZE)
+</SCRIPT>
+</HEAD>
+<SCRIPT language="javascript">document.write("<body onload='initCheck()' "+(_side=="undefined"?"leftmargin=0 topmargin=0 marginwidth=0 marginheight=0":"")+  ">");</SCRIPT>
+<SCRIPT language="javascript">if (_pg&&(_side!="undefined")) if (_pg.sticker) for (var i in _pg.sticker) with(_pg.sticker[i]) KeeBooSticker("keeStick"+i,text,color,y,x,w,h);</SCRIPT>
+<SCRIPT language="javascript">writeElem();</SCRIPT>
+</BODY>
+</HTML>

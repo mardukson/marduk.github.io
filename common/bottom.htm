@@ -1,0 +1,42 @@
+<html>
+<head>
+<script language="Javascript" src="top.js"></script>
+<script language="Javascript" src="layer.js"></script>
+<script language="Javascript" src="tools.js"></script>
+<script language="Javascript">
+_lab = parent._lab
+writeStyle()
+</script>
+</head>
+
+<body marginwidth="0" marginheight="0" topmargin="0" leftmargin="0" scroll="no">
+
+<SCRIPT LANGUAGE="javascript">
+	var t
+	
+	if			(_macIE)			t=496
+	else if (_mac&&_ns4)	t=492
+	else									t=480
+
+var s=table(null,(_moz?"style='position:absolute;' width=480":"width="+t))
+s+='<tr>'
+s+='<td>'+corner("botleft")+'</td>'
+s+='<td class="Thumb" width="'+(_moz?'97%':'100%')+'">'+box(1,1)+'</td>'
+s+='<td>'+corner("botright")+'</td>'
+s+='</tr></table>'
+document.write(s)
+</SCRIPT>
+
+<table border="0" cellpadding="0" cellspacing="0" width="480">
+<tr><td>&nbsp;</td></tr>
+<tr><td align="right">
+<SCRIPT language="javascript">button("cancel","top.window.close()")</SCRIPT>
+</td></tr>
+</table>
+
+<!--
+
+-->
+</body>
+
+</html>

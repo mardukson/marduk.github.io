@@ -1,0 +1,47 @@
+<HTML>
+<!--
+Copyright (c) 1997-2002, KeeBoo Corporation. 
+Copyright application on progress at the Copyright Office.
+All rights reserved.
+This source code is the property of KeeBoo Corporation,
+it cannot be reused, modified or published without prior 
+written consent from KeeBoo Corporation.
+KeeBoo and the KeeBoo logo are trademarks or registered
+trademarks of KeeBoo Corporation.
+-->
+
+<HEAD>
+<SCRIPT LANGUAGE="javascript" SRC="top.js"></SCRIPT>
+<SCRIPT LANGUAGE="javascript" SRC="layer.js"></SCRIPT>
+<SCRIPT LANGUAGE="javascript">
+_lab = parent._lab
+writeStyle(".noBold{font-weight:normal}")
+</SCRIPT>
+</HEAD>
+<BODY scroll="auto" marginwidth="0" marginheight="0" topmargin="0" leftmargin="0">
+<SCRIPT LANGUAGE="javascript">
+
+var keeString=_ktop._dyn?_ktop.parent.Generator:"KeeBook Creator"+"&reg;&nbsp;"+_ktop._docVersion
+if (_ktop._dyn&&(keeString=="")) keeString="KeeBook Creator"+"&reg;&nbsp;"+_ktop._docVersion
+
+var limitText=_ktop._partner?_ktop.formatString(parent.limit1Partner,_ktop._partner)+parent.limit2:_lab.limitText
+
+var tw
+
+		 if (_moz)				tw=466
+else if (_macIE)			tw=480
+else if (_ns4&&_mac)	tw=475
+else									tw=464
+
+var s=''
+s=table(null,"cellpadding='10' width="+tw+" class=ThumbBig")
+s+='<tr><td class="noBold">'
+s+="<P align='justify'>"+_lab.copyRight+"</P>"
+s+="<HR>"
+s+="<P>"+_lab.limit+"</P><P align='justify'>"+limitText+"</P>"
+s+='</td></tr></table>'
+document.write(s)
+
+</SCRIPT>
+</BODY>
+</HTML>

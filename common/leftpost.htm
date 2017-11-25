@@ -1,0 +1,63 @@
+<html>
+<head>
+<script language=javascript src="top.js"></script>
+<script language=javascript>
+var _pageInf=_main._page.left
+var _iframe = (document.layers==null)
+var _iframeElem = null
+var _w,_h
+function setClipRect(css,x1,y1,x2,y2){ css.clip = "rect("+y1+"px "+x2+"px "+y2+"px "+x1+"px)"; }
+function setSize(w,h) 
+{ 
+	if(_iframeElem&&(w!=_w||h!=_h)) 
+	{ 
+		setClipRect(_iframeElem.style,0,0,w,h); 
+		with(_iframeElem.style)
+		{
+			pixelWidth=""; pixelHeight=""; 
+			width=w; height=h; 
+		} 
+	}
+}
+function setPos(x,y) { if(_iframeElem) with(_iframeElem.style) { if (x!=null) pixelLeft=x; if (y!=null) pixelTop=y; } }
+function noScroll() { if(_iframeElem) with(document.body) scrollBy(-scrollLeft,-scrollTop); }
+if(_iframe) document.write( '<style type="text/css">#myframe { position:absolute; left:'+(parent.left?-screen.width:0)+'px; top:0px; width:' + parent.w1 + 'px; height:' + parent.h1 + '; }</style>' )
+</script>
+<script language=javascript>
+function postCB()
+{
+	if (!_main._ns4) parent.setTimeout("onLoadPageCB('left')",1000)
+	var theForm=document.all?document.forms(0):document.forms[0];
+	var args=_ktop.book.pages[_pageInf.idx].args
+	var s=""
+	if (args) for (var i=0;i<args.length;i++)
+	{
+		if (i>0) s+=";"
+		var arg=args[i]
+		for (var j=0;j<arg.length;j++)
+		{
+			if (j>0) s+="&"
+			s+=escape(arg[j])
+		}
+	}
+	theForm.args.value=s
+	theForm.submit()
+	
+	if (_main._ns4) parent.onLoadPageCB('left')
+}
+</script>
+</head>
+<body onload="postCB()" scroll="no" onscroll="noScroll()">
+<script language=javascript>
+if(_iframe)
+{
+	var str='<iframe name="myframe" id="myframe" src="" frameborder="0"></iframe>'
+	str+='<form method="post" target="myframe" action="'+_pageInf.url+'"><input type="hidden" id="args" name="args"></form>'
+	document.write(str)
+}
+else
+	document.write('<form method="post" action="'+_pageInf.url+'"><input type="hidden" id="args" name="args"></form>')
+</script>
+<script language="Javascript">if (_iframe) { _iframeElem=(document.all?document.all["myframe"]:document.getElementById("myframe")); }</script>
+</body>
+</html>

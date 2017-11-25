@@ -1,0 +1,160 @@
+<html>
+<!--
+Copyright (c) 1997-2002, KeeBoo Corporation. All rights reserved.
+Copyright application on progress at the Copyright Office.
+This source code is the property of KeeBoo Corporation,
+it cannot be reused, modified or published without prior 
+written consent from KeeBoo Corporation.
+KeeBoo and the KeeBoo logo are trademarks or registered
+trademarks of KeeBoo Corporation.
+-->
+<head>
+<script language="javascript" src="top.js"></script>
+<script language="javascript" src="layer.js"></script>
+<script language="javascript" src="tools.js" ></script>
+<script language="javascript">
+<!--
+calcSide()
+document.write("<SC"+"RIPT language=\"javascript\" src=\""+_main._localized+"mult.js\"><\/SC"+"RIPT>");
+//-->
+</script>
+
+<script language="javascript">
+
+var col=_item.color
+col=col?col:_ktop.book.color
+document.write('<style type="text/css">#theTitle{font-size:14px;}.bgNorm{background-color:'+_main.bg+';}BODY{background-color:'+(col?col:_main.bg)+"}"+_main._sty[".Normal"]+_main._sty[".Emphasis"]+_main._sty[".EmphasisBold"]+_main._sty[".Thumb"]+_main._sty[".BtnNorm"]+'</style>')
+
+
+var _url,_ext,_name
+if (_page!=_NULL)
+{
+	var _pg=_ktop.book.pages[_page]
+	if (_pg&&(_pg.internal=="mult"))
+	{
+		if (_pg.file) _url=_ktop._contents+_pg.file
+		else _url=_pg.url
+
+		if (_url&&(_url!=""))
+		{
+			var pt=_url.lastIndexOf(".")
+			if (pt>=0)
+			{
+				_ext=_url.slice(pt+1)
+				_name=_url.slice(0,pt)
+				var pt2=_name.lastIndexOf("/")
+				_name=_name.slice(pt2+1)
+			}
+		}
+		if (_ext) _ext=_ext.toLowerCase()
+		
+		document.write("<TITLE>"+_ktop.book.title+" - "+_ktop.getTitle(_item)+"</TITLE>")
+	}
+}
+
+function checkMime(val)
+{
+	if (_ie) return "enabled"
+	if (_ext)
+	{
+		var mime=navigator.mimeTypes
+		for (var i=0;i<mime.length;i++)
+		{
+			
+			var plug=mime[i]
+			{
+				var suf1=plug.suffixes.toLowerCase()
+				var suf2=""
+				
+				for (var j=0;j<suf1.length;j++)
+				{
+					var c=suf1.charAt(j)
+					if (c!=" ") suf2+=c
+				}
+				var suf3=suf2.split(",")
+				for (var k in suf3) if (suf3[k]==_ext)
+				{
+					return plug.enabledPlugin?"enabled":"disabled"
+				}
+			}
+		}
+	}
+	return "noplug"
+}
+
+function writeEmb()
+{
+	var s=""
+	if (_url&&(_url!=""))
+	{
+		var rp=(_ext=="ram")||(_ext=="rm")||(_ext=="rpm")
+
+		if ((checkMime(_url)=="enabled")&&!rp)
+		{
+			var pars=attr("src",_url)
+			
+			if (parent.parent._preloadFrame)
+				pars+=attr("width","1000")+attr("height","1000")
+			else
+				pars+=attr("width","99%")+attr("height","99%")
+			
+			pars+=attr("fullscreen","yes");
+			var playIt=_item.play?"true":"false"
+			
+			if (parent.parent._preloadFrame) playIt=false
+			pars+=attr("autoplay",playIt)+attr("autostart",playIt)+attr("play",playIt);
+			
+			s+="<embed "+pars+"></embed>"
+		}
+		else s=writeLink()
+	}
+	document.write(s)
+}
+
+function writeLink()
+{
+	var s=""
+
+	s+='<table width="100%" height="100%" border="0" cellpadding="8" cellspacing="2"><tr valign="middle"><td align="center">'
+	
+	s+='<table class="Thumb" border="0" cellpadding="0" cellspacing="0" "width=100%">'
+	s+='<tr><td align=left>'+corner("topleft")+'</td><td>'+box(1,7)+'</td><td align=right>'+corner("topright")+'</td></tr>'
+	s+='<tr><td colspan="3" align="left"><SPAN class="Thumb" id="theTitle">&nbsp;&nbsp;'+_lab2.multdoc+'</span></td></tr>'
+	
+	s+='<tr><td colspan="3">' 
+	s+='<table border="0" cellspacing="1" cellpadding="0">'
+	s+='<tr><td class="bgNorm">'
+	
+	s+='<table border=0 cellpadding="6" cellspacing="0">'
+	s+='<tr align="left" valign="middle">'
+	s+='<td>'+getImg(_neu+"media.gif",93,73)+'</td><td>'+box(20,1)+'</td>'
+	s+='<td>'
+	s+='<nobr><span class="EmphasisBold">'+_lab2.multdocname+'&nbsp;</span><span class="Normal">"'+_name+'"</span></nobr>'
+	s+='<br><nobr><span class="EmphasisBold">'+_lab2.multdoctype+'&nbsp;</span><span class="Normal">'+_ext.toUpperCase()+'</span></nobr>'
+	s+='</td>'
+	s+='</tr>'
+	
+	s+='<tr><td colspan="3">'+table(_NULL," background='"+_neu+"dot.gif' width=100%")+"<tr><td>"+box(6,12)+"</td></tr></table></td></tr>"
+	s+='<tr><td colspan="3"><span class="Normal">'+_lab2.multdocexplain+'</span></td></tr>'
+	
+	s+='<tr><td colspan="3" align="right">'+table()+'<tr><td>'+buttonLnk(_lab2.multdocplay,_url)+'</td><td>'+box(40,1)+'</td></tr></table></td></tr>'
+	
+	s+='</table>'
+	
+	s+='</td></tr>'
+	s+='</table>'
+	s+='</td></tr>'
+	
+	s+='</table>'
+	
+	s+='</td></tr></table>'
+	
+	return s
+}
+
+</script>
+</head>
+<body>
+<script language="javascript">writeEmb()</script>
+</body>
+</html>

@@ -1,0 +1,279 @@
+<!--
+Copyright (c) 1997-2002, KeeBoo Corporation. All rights reserved.
+Copyright application on progress at the Copyright Office.
+This source code is the property of KeeBoo Corporation,
+it cannot be reused, modified or published without prior 
+written consent from KeeBoo Corporation.
+KeeBoo and the KeeBoo logo are trademarks or registered
+trademarks of KeeBoo Corporation.
+-->
+
+<HTML>
+<SCRIPT language="javascript" src="layer.js"></SCRIPT>
+<SCRIPT language="javascript" src="top.js"></SCRIPT>
+<SCRIPT LANGUAGE="javascript">
+<!--
+document.write("<SC"+"RIPT language=\"javascript\" src=\""+_main._localized+"find.js\"><\/SC"+"RIPT>")
+//-->
+</SCRIPT>
+
+<SCRIPT language="javascript">
+var _textField,_startButton,_stopButton,_clearButton,_gaugeLayer,_currentIndex=-1,_nsStr=''
+var liens=_ktop.book.pages,_searchURL='empty.htm',_hiddenFrame=_NULL,_interval=_NULL,_timeout=_NULL
+var _searchPage="here"
+
+function calculGauge(idx)
+{
+	getFrame('find_frame').theProgress.set(idx*100/(liens.length))
+}
+
+function macIECheck()
+{
+	var r=false
+	if (getFrame('hidden_frame') != _NULL)
+	{
+		var doc=getFrame('hidden_frame').document
+		if ((doc)&&(doc.readyState=='complete')) r=true
+	}
+		
+	if (r)
+	{
+		clearInterval(_interval);_interval=_NULL;onLoadIndexCB()
+	}
+}
+
+function onLoadIndexCB()
+{
+	if (_currentIndex!=-1)
+	{
+		if (_ie) setTimeout('onLoadIndex()',1)
+		else onLoadIndex()
+	}
+}
+
+function onLoadIndex()
+{
+	if (_currentIndex!=-1)
+	{
+		searchInFrame();calculGauge(_currentIndex);searchByIndex(_currentIndex+1)
+	}
+}
+
+function searchInFrame()
+{
+	var _hidden=getFrame('hidden_frame');if (_hidden==_NULL) return
+	var _hiddenFrame=_macIE?_hidden:getFrame('hidden',_hidden);if (_hiddenFrame==_NULL) return
+
+	if (_ktop.frameSearch(_hiddenFrame,_ktop._searchWord))
+	{
+		displayResult(_currentIndex);_ktop._found[_ktop._found.length]=_currentIndex
+	}
+}
+
+function gotoResult(i)
+{
+	foc();
+	_ktop.changePage(i,true,true,parent._side,"gp","find")
+}
+
+function getDisplayResult(index)
+{
+	if (index!=-1) return table(_NULL," width='100%'")+'<tr><td valign=top>'+'<a class=Normal href="javascript:parent.gotoResult('+index+')">'+getImg(_neu+'menu_link_local.gif',32,16,"left")+'&nbsp;'+liens[index].title+'</a></td><td align=right><span class=Normal>'+(index+1)+'</span></td></tr></table>'
+	else if (_ktop._findInPages)
+	{
+		var nb=_ktop.book.extCount
+		if (nb>0) return "<SPAN class=Emphasis>"+formatString((nb==1?_lab.indexExtOnePage:_lab.indexExtSevPages)+_lab.indexExtExplanation,nb)+"</SPAN><BR><BR>"
+	}
+	return ""
+}
+
+function displayResult(index)
+{
+	var frame=getFrame('find_result'),str=getDisplayResult(index)
+	if (frame&&(str!=""))
+	{
+		if (_ns||_macIE)
+		{
+			_nsStr+=str
+			if (frame.writeInLayer)
+			{
+				if (_moz&&document.createRange) 
+					frame.mozInsertHTMLBefEnd("results",str)
+			}
+		}
+		else if ((frame.document.readyState=="complete")&&(frame.results)) frame.results.insertAdjacentHTML("BeforeEnd",str)
+	}
+}
+
+function beginSearchCB()
+{
+	if (_currentIndex==-1)
+	{
+		var frame=getFrame('find_result'),frame2=getFrame('find_frame')
+
+		if ((!_ktop._findInTitles)&&!(_ktop._findInPages)) alert(_lab.findCheck)
+		else
+		{
+			if (frame&&frame2)
+			{
+				_ktop._searchWord=frame2.getVal()
+				if (_ktop._searchWord!='')
+				{
+					getFrame('find_frame').theProgress.Show();
+					frame2.showLayer(false,"buttonStart");frame2.showLayer(true,"buttonStop");_nsStr='';_ktop._found.length=0
+
+					if (_ie&&(frame.document.readyState=="complete"))
+					{
+						if (frame.results) frame.results.innerHTML=''
+					}
+					else if (frame.writeInLayer) frame.writeInLayer('')
+
+					displayResult(-1);searchByIndex(0)
+				}
+				else 
+					alert(_lab.findStr)
+			}
+		}
+	}
+}
+
+function stopSearchCB()
+{
+getFrame('find_frame').theProgress.Hide();
+
+	if (_currentIndex!=-1)
+	{
+		if (_timeout!=_NULL) clearTimeout(_timeout)
+	
+		if ((_macIE)&&(_interval!=_NULL))
+		{
+			clearInterval(_interval)
+			_interval=_NULL
+		}
+
+		var frame2=getFrame('find_frame')
+		if (frame2)
+		{
+			frame2.showLayer(false,"buttonStop")
+			frame2.showLayer(true,"buttonStart")
+		}
+		_currentIndex=-1;getFrame('find_result').document.location.reload();calculGauge(0)
+	}
+}
+
+function clearIndexCB()
+{
+	_ktop._searchWord="";_ktop._found.length=0;_nsStr="";getFrame('find_frame').setVal("")
+	var frame=getFrame('find_result')
+	if (_ie&&(frame.document.readyState=="complete"))
+	{
+		if (frame.results) frame.results.innerHTML=''
+	}
+	else
+	{
+		if (frame.writeInLayer) frame.writeInLayer('')
+	}
+	if (_ns) getFrame('find_result').document.location.reload()
+	stopSearchCB()
+}
+
+function searchByIndex(index)
+{
+	_currentIndex=index;_timeout=_NULL
+
+	if (index>=liens.length)
+	{
+		calculGauge(index);setTimeout("stopSearchCB()",50);return
+	}
+
+	var thePage=liens[index]
+	
+	
+	if ((thePage.internal!=_NULL)&&(thePage.internal!="pict")&&(thePage.internal!="mult")&&(thePage.internal!="tpl"))
+	{
+		calculGauge(index);_timeout=setTimeout("searchByIndex("+(index+1)+")",1);return
+	}
+	
+	if (_ktop._findInTitles)
+	{
+		var lowSearch=_ktop._searchWord.toLowerCase()
+		if ((thePage.oldTitle.toLowerCase().indexOf(lowSearch)>=0)||(thePage.tip!=_NULL&&(thePage.tip.toLowerCase().indexOf(lowSearch)>=0)))
+		{
+			calculGauge(index);_ktop._found[_ktop._found.length]=index;displayResult(index)
+			_timeout=setTimeout("searchByIndex("+(index+1)+")",1);return
+		}
+	}
+
+	if (_ktop._findInPages)
+	{
+		if (!thePage.isInDomain)
+		{
+			searchByIndex(index+1);return
+		}
+	
+		if (thePage.internal=="pict")
+		{
+			var lowSearch=_ktop._searchWord.toLowerCase(),found=false
+			
+			if (thePage.sticker)
+			{
+				for (var i in thePage.sticker)
+				{
+					var txt=thePage.sticker[i].text
+					if (txt.toLowerCase().indexOf(lowSearch)>=0)
+					{
+						calculGauge(index);_ktop._found[_ktop._found.length]=index;displayResult(index);found=true;break;
+					}
+				}	
+			}
+			
+			if (!found&&(thePage.cap!=_NULL))
+			{
+				for (var i in thePage.cap)
+				{
+					var txt=thePage.cap[i].txt
+					if (txt.toLowerCase().indexOf(lowSearch)>=0)
+					{
+						calculGauge(index);_ktop._found[_ktop._found.length]=index;displayResult(index);break;
+					}
+				}	
+			}
+
+			_timeout=setTimeout("searchByIndex("+(index+1)+")",1)
+			return
+		}
+		
+		else _searchURL=_ktop.pageURL(thePage)
+
+		_ktop._thePrevId=_currentIndex
+		var frame=getFrame('hidden_frame')
+		if (_macIE)
+		{
+			if (_interval!=_NULL) clearInterval(_interval)
+
+			changeUrl(frame,_searchURL)
+			_interval=setInterval('macIECheck()',200)
+		}
+		else
+		{
+			if (frame.location.href=='hidden1.htm') changeUrl(frame,'hidden2.htm')
+			else changeUrl(frame,'hidden1.htm')
+		}
+	}
+	else
+		searchByIndex(index+1)
+}
+</SCRIPT>
+<HEAD>
+<SCRIPT language="javascript">
+document.write("<TITLE>"+_ktop.book.title+" - "+_lab.index+"</TITLE>")
+</SCRIPT>
+</HEAD>
+<FRAMESET frameborder=no border=0 framespacing=0 rows="100%,*">
+<frameset rows="230,*" border=0 frameborder=no framespacing=0>
+<FRAME name="find_frame" SRC="find.htm" frameborder=no border=0 scrolling="no" noresize>
+<FRAME name="find_result" SRC="find_result.htm" frameborder=no border=0 noresize>
+</FRAMESET>
+<FRAME name="hidden_frame" src="empty.htm" frameborder=no border=0 noresize>
+</FRAMESET><noframes></noframes>
+</HTML>

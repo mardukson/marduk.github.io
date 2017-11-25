@@ -1,0 +1,39 @@
+<html>
+<!--
+Copyright (c) 1997-2002, KeeBoo Corporation. All rights reserved.
+Copyright application on progress at the Copyright Office.
+This source code is the property of KeeBoo Corporation,
+it cannot be reused, modified or published without prior 
+written consent from KeeBoo Corporation.
+KeeBoo and the KeeBoo logo are trademarks or registered
+trademarks of KeeBoo Corporation.
+-->
+
+<HEAD>
+<SCRIPT language="javascript" src="layer.js"></SCRIPT>
+<SCRIPT language="javascript" src="top.js"></SCRIPT>
+<SCRIPT LANGUAGE="javascript">
+<!--
+document.write("<SC"+"RIPT language=\"javascript\" src=\""+_main._localized+"import.js\"><\/SC"+"RIPT>");
+//-->
+</SCRIPT>
+<SCRIPT language="javascript">writeStyle(".list{MARGIN-BOTTOM:20px;}")</SCRIPT>
+</HEAD>
+<BODY>
+<SCRIPT language="javascript">
+function keebooOpen()
+{
+	_ktop.window.external.tools.openWindow(_ktop.parent.location.href)
+}
+
+var str="<H1 class=ThumbBig>"+_lab.importTitle+"</H1>"
+
+str+="<p><div class=Normal>"+_lab.importExplain1+"</div></p>"
+str+="<p><div class=Normal>"+_lab.importExplain2+"</div></p>"
+str+="<li><a href='javascript:keebooOpen()'>"+_lab.importViewIt+"</a></li></ul>"
+str+="<p><div class=Normal>"+_lab.importExplain3+"</div></p>"
+
+document.write(str)
+</SCRIPT>
+</BODY>
+</HTML>

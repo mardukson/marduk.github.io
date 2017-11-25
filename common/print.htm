@@ -1,0 +1,40 @@
+<HTML>
+<HEAD>
+<SCRIPT LANGUAGE="JavaScript" src="layer.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" src="top.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" src="print.js"></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript">
+document.write( '<scr' + 'ipt language="javascript" src="../lang/' + lang + '/print.js"></scr' + 'ipt>' )
+</SCRIPT>
+<LINK href="print.css" rel="stylesheet">
+</HEAD>
+
+<BODY onload="Init()" scroll="no">
+<div class="Container" id="Console">
+	<span id="AcrobatExplanation"></span>
+	<br><br>
+	<div id="CheckAcrobat"></div>
+	<div id="IfNoAcrobat" style="display:none"></div>
+	<div id="IfAcrobat" style="display:none"></div>
+	<div id="Config" class="Title"></div>	
+</div>
+<div id="Buttons">
+<nobr>
+<input id="PrintButton" type="button" onclick="printCB()" value="Print" disabled>&nbsp;
+<input id="CancelButton" type="button" onclick="cancelCB()" value="Ok">
+</nobr>
+</div>
+<div id="PdfContainer">&nbsp;</div>
+
+</BODY>
+<SCRIPT LANGUAGE="JavaScript">
+document.title = _lab.Title
+document.getElementById('AcrobatExplanation').innerHTML = _lab.AcrobatExplanation
+document.getElementById('CheckAcrobat').innerHTML = _lab.AcrobatCheck
+document.getElementById('IfNoAcrobat').innerHTML = _lab.AcrobatNotInstalled
+document.getElementById('IfAcrobat').innerHTML = _lab.AcrobatInstalled
+document.getElementById('Config').innerHTML = "<nobr>" + _lab.Acrobat + "</nobr>"
+document.getElementById('Config').value = _lab.Ok
+document.getElementById('Config').value = _lab.Print
+</SCRIPT>
+</HTML>

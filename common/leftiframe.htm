@@ -1,0 +1,31 @@
+<HTML>
+<HEAD>
+<script language="Javascript">
+var _iframeElem
+var _w,_h
+var scrollMargin=20
+function setClipRect(css,x1,y1,x2,y2){ css.clip = "rect("+y1+"px "+x2+"px "+y2+"px "+x1+"px)"; }
+function setSize(w,h,_margin) 
+{ 
+	if(_iframeElem&&(w!=_w||h!=_h)) 
+	{ 
+		with(_iframeElem.style)
+		{
+			pixelWidth=""; pixelHeight=""; 
+			pixelWidth=w; height=h; 
+		} 
+		setClipRect(_iframeElem.style,0,0,w-(_margin?scrollMargin:0),h-(_margin?scrollMargin:0))
+	}
+}
+function setPos(x,y) { if(_iframeElem) with(_iframeElem.style) { if (x!=null) pixelLeft=x; if (y!=null) pixelTop=y; } }
+function setSrc() { window.frames["myframe"].location.replace(parent._page.left.url) }
+function loadCB() { try { parent.onLoadPageCB('left',self.frames[0]) } catch(e){} }
+function noScroll() { with(document.body) scrollBy(-scrollLeft,-scrollTop); }
+document.write( '<style type="text/css">Body{background-color:'+parent.bg+';}#myframe { position:absolute; left:0px; top:0px; width:' + parent.wL + 'px; height:' + parent.hp + '; }</style>' )
+</script>
+</HEAD>
+<BODY onscroll="noScroll()" onload="loadCB()" scroll="no" dir="rtl">
+<script language="Javascript">document.write('<iframe id="myframe" name="myframe" src="'+parent._page.left.url+'" frameborder="0"></iframe>');parent.cleft=true;</script>
+<script language="Javascript">_iframeElem=(document.all?document.all["myframe"]:document.getElementById("myframe"));</script>
+</BODY>
+</HTML>
