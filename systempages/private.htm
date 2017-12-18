@@ -1,0 +1,65 @@
+<html>
+<!--
+Copyright (c) 1997-2002,KeeBoo Corporation. All rights reserved.
+Copyright application on progress at the Copyright Office.
+This source code is the property of KeeBoo Corporation,
+it cannot be reused,modified or published without prior 
+written consent from KeeBoo Corporation.
+KeeBoo and the KeeBoo logo are trademarks or registered
+trademarks of KeeBoo Corporation.
+-->
+<HEAD>
+<script src="../common/top.js" language="javascript"></script>
+<SCRIPT LANGUAGE="javascript">
+<!--
+document.write("<SC"+"RIPT language=\"javascript\" src=\""+_main._localized+"advert.js\"><\/SC"+"RIPT>");
+//-->
+</SCRIPT>
+<script language="javascript">
+writeStyle()
+</script>
+<script language="javascript">
+function NormTxt(s){document.write("<span class=Normal>"+s+"</span>")}
+function dots(){document.write(_ktop.table(_NULL," background='"+_neu+"dot.gif' width=100%")+"<TR><TD>"+box(6,12)+"</TD></TR></TABLE>")}
+function download(){_ktop.goTo7x('WhatIsKeeBoo','http://www.keeboo.com/redirect/download.php?Source='+parent.qualifier)}
+var getImg=_ktop.getImg
+var box=_ktop.box,corner=_ktop.corner
+var lab = eval( "_lab." + parent.qualifier )
+</script>
+</HEAD>
+<body topmargin=0>
+<table cellspacing="0" cellpadding="4" border="0" width="100%">
+<script language="javascript">if (_ktop._macIE) document.write("<TBODY>")</script>	
+<tr valign="top"><td align="left"><script language="javascript">dots()</script></td></tr>
+<tr><td><script language="javascript">NormTxt(lab.intro1)</script></td></tr>
+<tr><td>
+<script language="javascript">
+s="<table cellpadding=0 cellspacing=0 border=0 width=100%><tr>"
+s+="<td class=VerySmall>" + lab.reserved + "</td>";
+s+="<td>&nbsp;<a href='javascript:download()'>"+getImg("../images/logo" + parent.qualifier + ".gif",null,null,"bottom")+"</a></td>";
+s+="</tr></table>"
+document.write(s)
+</script>
+</td></tr>
+<tr><td><script language="javascript">NormTxt(lab.intro2)</script></td></tr>
+<script language="javascript">
+if ( lab.pt1 )
+{
+	s = "<tr><td>"
+	s+="<ul>"
+	s+="<li class=Emphasis><span class=Small>" + lab.pt1 + "</span></li>"
+	s+="<li class=Emphasis><span class=Small>" + lab.pt2 + "</span></li>"
+	s+="<li class=Emphasis><span class=Small>" + lab.pt3 + "</span></li>"
+	s+="<li class=Emphasis><span class=Small>" + lab.pt4 + "</span></li>"
+	s+="</ul>"
+	s+="</td></tr>"
+	document.write(s)
+}
+</script>
+<tr>
+<td align="center"><script language="javascript">NormTxt(getImg(_neu+"triangle.gif",5,12)+"&nbsp;&nbsp;"+lab.downl+"&nbsp;&nbsp;");</script></td>
+</tr>
+<script language="javascript">if (_ktop._macIE) document.write("</TBODY>")</script>	
+</table>
+</body>
+</html>

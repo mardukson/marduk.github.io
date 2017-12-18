@@ -1,0 +1,152 @@
+<HTML>
+<!--
+Copyright (c) 1997-2005, KeeBoo Corporation. All rights reserved.
+Copyright application on progress at the Copyright Office.
+This source code is the property of KeeBoo Corporation,
+it cannot be reused, modified or published without prior 
+written consent from KeeBoo Corporation.
+KeeBoo and the KeeBoo logo are trademarks or registered
+trademarks of KeeBoo Corporation.
+-->
+<SCRIPT LANGUAGE="javascript" SRC="../common/layer.js"></SCRIPT>
+<SCRIPT LANGUAGE="javascript" SRC="../common/top.js"></SCRIPT>
+<SCRIPT LANGUAGE="javascript">
+var _wr=_ktop.getWrapper(parent._page,_ext),_scrolled=_wr?((_wr.x!=0)||(_wr.y!=0)):false,_xm=0,_ym=0,_mpg=-1,_curTipPg=-1,_inhibitFirst=false,lineTxt,_tipWidth=200
+function menuImg(folder,qualif)
+{
+	if (_imgcss)
+	{
+		var x=-88+(qualif?-96:(folder?((folder.indexOf("open")>=0)?-32:-64):0))
+		return getImg(_neu+"menu_pixel.gif",qualif?16:32,16,"top", ' style="background-image:url('+_neu+'menucorners.gif);background-position:'+x+' 0;"')
+	}
+	else return getImg(_neu+(qualif?"qualif":"menu_"+(folder?folder:"link_local"))+".gif",qualif?16:32,16,"top")
+}
+
+function heightLayer(id,frm)
+{
+	return _moz?0:(_ns?layerCSS(id,frm).clip.height:layerElem(id,frm).offsetHeight)
+}
+
+function chToWrap(ch,w)
+{
+	if (w==_NULL) return _NULL;if (w.chapter==ch) return w
+	for (var i=0;i<w.sub.length;i++)
+	{
+		var r=chToWrap(ch,w.sub[i]);if (r) return r
+	}
+	return _NULL
+}
+
+function toggleChapter(i)
+{
+	var chapter=_ktop.getChapterByPage(i-1);if (chapter==_NULL) return
+	var w=chToWrap(chapter,_wr);if (w==_NULL) return
+	w.expanded=!w.expanded;setTimeout("_doc.location.replace(_doc.location.href)",20)
+}
+
+function tipText(p){return _ktop.book.pages[p].tip}
+
+function reallyShow(p)
+{
+	if ((_curTipPg!=p)&&(_mpg==p))
+	{
+		_curTipPg=p;var s
+		if (_ie||_moz) s="<div style='padding:2px;'class=toolTipBorder>%1</div>"
+		else if (_ns) s="<table class=toolTipBorder border=0 cellpadding=0 cellspacing=0><tr><td><span class=toolTipBorder>%1</span></td></tr></table>"
+		showTip("theTip",formatString(s,tipText(p)),_xm,_ym)
+	}
+}
+
+function reallyHide(p,force)
+{
+	if ((_mpg==-1)||force)
+	{
+		hideTip("theTip");_curTipPg=-1
+	}
+}
+
+function mouseOutCB(p)
+{
+	_mpg=-1;setTimeout("reallyHide("+p+",false)",50);return true
+}
+
+function mouseOverCB(p)
+{
+	if ((tipText(p))&&(!_inhibitFirst))
+	{
+		_mpg=p;setTimeout(formatString("reallyShow(%1)",p),70);return
+	}
+	_inhibitFirst=false
+}
+
+function tipEvent(p)
+{
+	return formatString(" onmouseover='mouseOverCB(%1)' onmouseout='mouseOutCB(%1)'",p-1)
+}
+
+function changePage(nb)
+{
+	if (parent._side!="undefined") _main.foc()
+	_ktop.changePage(nb-1,false,false,getPageSide(),"gp","toc",null,parent._page+1,parent._item.id)
+}
+
+function mouseMoveCB(ev)
+{
+	_xm=eventGetX(ev);_ym=eventGetY(ev);return true
+}
+
+function getWrapperHtml(curW,idt)
+{
+	var items=curW.chapter.items,lastItem=items.length-1,s="",before="",wi=0,first=curW.parent==_NULL,sub=curW.sub
+	if (first)
+	{
+		s+="<TABLE width='100%' border=0 cellspacing=0 cellpadding=0><TR valign='top'><TD><SPAN class=Normal>"
+		lineTxt="</TD><TD align='right'><SPAN class=Lines>"
+	}
+		
+	for (var j=0;j<idt;j++) before+="&nbsp;&nbsp;&nbsp;&nbsp;"
+	for (var i=0;i<=lastItem ;i++)
+	{
+		var item=items[i],wrapper=item.isChapter?sub[wi++]:_NULL,page=item.page,itl=item.internal,exp=wrapper&&(wrapper.expanded)
+
+		if ((itl!='author')&&(itl!='toc')&&(itl!="blank")&&(item.TOCRef))
+		{
+			s+="<NOBR>&nbsp;"+before+"<a class=Normal href='javascript:"+(wrapper?"toggleChapter":"changePage")+"("+page+")'"+tipEvent(page)+">"+menuImg(wrapper?(exp?"folder_open":"folder_closed"):0,0)+"&nbsp;"+(itl?_ktop.getTitle(item):item.title)+(item.enhanced?"&nbsp;"+menuImg(0,1):"")+"</A>"+"</NOBR><BR>";lineTxt+="&nbsp;"+page+"<BR>"
+		}
+		if (exp) s+=getWrapperHtml(wrapper,idt+1)
+	}
+	if (first) 
+	{
+		s+="</SPAN>"+lineTxt+"</SPAN></TD></TR></TABLE>"
+	}
+	return s
+}
+
+function adjustSB()
+{
+	if ((_wr.x!=0)||(_wr.y!=0))
+	{
+		if (_ns4)
+		{
+			var tocCSS=layerCSS("toc");if (window.innerHeight<(tocCSS.clip.height+tocCSS.top)) window.scrollTo(_wr.x,_wr.y)
+		}
+		else window.scrollTo(_wr.x,_wr.y)
+		showLayer(true,"toc")
+	}
+}
+
+function SBInfo()
+{
+	_wr.x=_ns?self.pageXOffset:_doc.body.scrollLeft;_wr.y=_ns?self.pageYOffset:_doc.body.scrollTop
+}
+</SCRIPT>
+<SCRIPT LANGUAGE="javascript">
+if (_wr)
+{
+	var hide=(_wr.x!=0)||(_wr.y!=0);onLoadUnload=_macIE?"":(attr("onunload","SBInfo()")+(_scrolled?attr("onload","adjustSB()"):""))
+	var beg=(_ie||_moz)?"<div id=toc" +(hide?" style='visibility:hidden'":"")+">":("<layer id=toc "+(hide?"visibility='hidden'>":">"));endDiv=(_ie||_moz)?"</div>":"</layer>"
+	_doc.write("<HEAD><STY"+"LE type='text/css'>"+"A{text-decoration:none;}"+_main._sty['BODY']+_main._sty2['.toolTipBorder']+_main._sty2['.toolTipText']+_main._sty['.Normal']+_main._sty2['.Lines']+"</STY"+"LE></HEAD><BODY "+onLoadUnload+">"+beg+getWrapperHtml(_wr,0)+endDiv+getTipHTML("theTip")+"</BODY>")
+	_doc.close();_doc.onmousemove=mouseMoveCB;if (_ns4) _doc.captureEvents(Event.MOUSEMOVE)
+}
+</SCRIPT>
+</HTML>

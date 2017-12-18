@@ -1,0 +1,103 @@
+<HTML>
+<!--
+Copyright (c) 1997-2002, KeeBoo Corporation. All rights reserved.
+Copyright application on progress at the Copyright Office.
+This source code is the property of KeeBoo Corporation,
+it cannot be reused, modified or published without prior 
+written consent from KeeBoo Corporation.
+KeeBoo and the KeeBoo logo are trademarks or registered
+trademarks of KeeBoo Corporation.
+-->
+
+<HEAD>
+<SCRIPT language="javascript" src="../common/top.js"></SCRIPT>
+<SCRIPT LANGUAGE="javascript">
+<!--
+document.write("<SC"+"RIPT language=\"javascript\" src=\""+_main._localized+"biblio.js\"><\/SC"+"RIPT>");
+//-->
+</SCRIPT>
+<SCRIPT language="javascript">
+calcSide()
+var book=_ktop.book
+writeStyle()
+</SCRIPT>
+</HEAD>
+<BODY>
+<SCRIPT LANGUAGE="javascript">
+var keeLab=_ktop.formatString(_lab.biblioExplain,(_ktop._dyn&&(_ktop.parent._DownloadKeeBooUrl==_NULL)&&(_ktop.parent._PartnerName))?_ktop.parent._PartnerName:"<a href=\"javascript:_ktop.goTo7x('AutorunLink','http://www.keeboo.com');\">KeeBoo</a>"),_ref=new Array,_refUrl=new Array
+document.write("<DIV class=Normal>"+keeLab+"<BR>&nbsp;</DIV><UL>")
+
+function getSite(url)
+{
+	if (url.toLowerCase().indexOf("http://")==0)
+	{
+		url=url.slice(7)
+		var slash=url.indexOf("/")
+		if (slash>=0) url=url.slice(0,slash)
+		if (url.length>0) return url
+	}
+	else if (url.toLowerCase().indexOf("pack://")==-1)
+		return document.location.hostname
+}
+
+for (var i=0; i<book.pages.length;i++)
+{
+	with (book.pages[i]) if (((internal==_NULL)||(internal=="pict")||(internal=="mult")||(internal=="tpl"))&&(TOCRef))
+	{
+		var site=getSite(url)
+		if (biblio)
+		{
+			var b=biblio
+			if (site) b="<A target=_blank href='http://"+site+"'>"+site+"</A><BR><BR>"+b
+			if (_ref[b]==_NULL) _ref[b]=new Array
+			ref=_ref[b];ref[ref.length]=i
+		}
+		else if (url)
+		{
+			if (site)
+			{
+				if (_ref[site]==_NULL) _ref[site]=new Array
+				ref=_ref[site];ref[ref.length]=i
+				_refUrl[site]="http://"+site+"/"
+			}
+		}
+	}
+}
+
+var s=""
+for (var i in _ref)
+{
+	var lab=_refUrl[i]?"<A target=_blank href='"+_refUrl[i]+"'>"+i+"</A>":i
+	s+="<LI class=EmphasisBold><SPAN class=EmphasisBold>"+lab+"<BR>&nbsp;</SPAN><TABLE class=Normal border=0>"
+	var ref=_ref[i]
+	for (var j=0;j<ref.length;j++)
+	{
+		var idx=ref[j]
+		var pg=book.pages[idx],isInDom=_ktop.sameDomain(pg)
+		
+		
+		with(pg)
+		{
+			var pagLnk='<A href="javascript:gotoResult('+idx+')">',pagLnkEnd=(url)?"</A>":""
+			s+="<TR valign=top><TD><SPAN class=Normal>"+_lab.page+"&nbsp;"+(idx+1)+"&nbsp;"+"-</SPAN></TD><TD><SPAN class=Normal>"+pagLnk+title+pagLnkEnd
+
+			if (!isInDom) s+="&nbsp;&nbsp;<A target=_blank href='"+url+"'>"+_lab.original+"</A>"
+
+		}
+		s+="</SPAN></TD></TR>"
+	}	
+	s+="</TABLE><BR>&nbsp;</DIV></LI>"
+}
+
+function gotoResult(i)
+{	
+	foc()
+	_ktop.changePage(i,false,false,parent.parent._side,"gp","src",null,_page+1,_item.id)
+}
+
+
+document.write(s)
+</SCRIPT>
+</UL>
+</BODY>
+</HTML>
