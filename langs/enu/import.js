@@ -1,0 +1,11 @@
+var _lab=new Array
+_lab.importTitle="Import a KeeBook"
+_lab.importExplain1="The program has detected that the link or address you used is that of a KeeBook published by using the KeeBook Publishing Pro technology."
+_lab.importExplain2="Importing a Web book into KeeBook Creator is not possible.<br>Only KeeBoo books (exported as native .7xB books) can be imported in KeeBook Creator.<br><br>You can view the KeeBook in your browser."
+_lab.importExplain3="The KeeBoo team"
+_lab.importDoIt="Import into my library"
+_lab.importViewIt="View in my browser"
+_lab.cannotImport1="You are trying to import a Web book in your library. You cannot do this with your current version of KeeBoo: you need at least a 2.1 version of the software."
+_lab.cannotImport2="It is recommended to download and install the latest version of the software (now renamed KeeBook Creator). You will then be able to import Web books in your library."
+_lab.cannotImport3="If you are using a 1.0x version of KeeBoo, please go to <i>www.keeboo.com</i> to download the latest version of KeeBoo for free."
+_lab.cannotImport4="If you are using a 2.0 version of KeeBoo, just go to the <B>Help</B> menu and choose <B>Update your KeeBoo</B> to download the latest version of the software for free."

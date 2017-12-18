@@ -1,0 +1,38 @@
+<HTML>
+<HEAD>
+<!--
+Copyright (c) 1997-2005, KeeBoo Corporation. 
+Copyright application on progress at the Copyright Office.
+All rights reserved.
+This source code is the property of KeeBoo Corporation,
+it cannot be reused, modified or published without prior 
+written consent from KeeBoo Corporation.
+KeeBoo and the KeeBoo logo are trademarks or registered
+trademarks of KeeBoo Corporation.
+-->
+
+<!-- Cross browser library -->
+<SCRIPT language="javascript" src="../layer.js"></SCRIPT>
+
+<!-- Lang ans skin libraries-->
+<SCRIPT LANGUAGE="javascript">
+document.write('<SCR'+'IPT LANGUAGE="javascript" src="../../langs/'+GetParams()['lang']+'/labels.js"></SCR'+'IPT>');
+document.write('<SCR'+'IPT LANGUAGE="javascript" src="../../skins/'+GetParams()['skin']+'/style.js"></SCR'+'IPT>');
+</SCRIPT>
+
+<!-- Graphical Elements -->
+<SCRIPT language="javascript" src="gelems.js"></SCRIPT>
+<SCRIPT language="javascript" src="toolbar.js"></SCRIPT>
+
+<!-- Structure construction -->
+<SCRIPT language="javascript" src="../navigate.js"></SCRIPT>
+
+<!-- Graphical construction -->
+<SCRIPT LANGUAGE="javascript" src="build.js"></SCRIPT>
+</HEAD>
+<body onunload="putInfoCB()">
+<SCRIPT language="javascript"> 
+_Book.write()
+</SCRIPT>
+</body>
+</HTML>

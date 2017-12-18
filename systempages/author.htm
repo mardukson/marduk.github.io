@@ -1,0 +1,252 @@
+<HTML>
+<!--
+Copyright (c) 1997-2005,KeeBoo Corp. All rights reserved.
+This source code is the property of KeeBoo Corp.,
+it cannot be reused,modified or published without prior
+written consent from KeeBoo Corp.
+KeeBook Creator and the KeeBook Creator logo are trademarks or registered
+trademarks of KeeBoo Corp.
+-->
+<HEAD>
+<SCRIPT LANGUAGE="javascript" SRC="../common/layer.js"></SCRIPT>
+<SCRIPT LANGUAGE="javascript" SRC="../common/top.js"></SCRIPT>
+<SCRIPT LANGUAGE="javascript">
+
+ff				= "font-family:" + _main.ff + ";"
+fc				= "color:" + _main.fg + ";" 
+fs				= "font-size:" + _main.fs + "px;"
+fbold			= "font-weight:bold;"
+
+s_Title		= ".Title{font-size:20px;"+ff+fc+fbold+"}"
+s_Author	= ".Author{"+fs+ff+fc+fbold+"}"
+s_Link		= "A:link{"+fs+ff+fc+fbold+"}" +  "A:active{"+fs+ff+fc+fbold+"}" +  "A:visited{"+fs+ff+fc+fbold+"}"
+
+writeStyle(s_Title + s_Author + s_Link+".hid{visibility:"+_ktop._hide+";}")
+
+
+function attr2(name,val){return val!=_NULL?" "+name+"=\""+val +"\"":""}
+
+var logoH=0
+var contentH, photoW, photoH, photo
+//------------------------------------------------------------------------------
+function BrandingLogoHTML() {
+//------------------------------------------------------------------------------
+var s=''
+var logoPath="",logoClick="",logoTip,logoHeight
+var brd=_ktop._dyn?_ktop.parent._BrandingImages:_ktop._BrandingImages
+
+	if (brd!=_NULL) {
+
+		var desc=brd['authorlogo1']
+
+		if (desc) {
+			logoPath=_ktop.brandingUrl(desc,"AuthorLogo");
+			logoClick=_ktop.brandingClickUrl(desc,"AuthorLogo");
+			logoTip=desc.ToolTip
+			logoHeight=desc.Height
+		}
+	}
+	else with (book) {
+		logoPath=branding.logoPath;logoClick=branding.logoUrl;logoTip=branding.logoTip;logoHeight=branding.logoHeight
+	}
+
+	if (logoPath&&logoPath!=""&&(!_ktop._preloadPage&&!_ktop._searchPage)) {
+		s+= '<A href="javascript:_ktop.goToWebViaImage(\''+ logoClick + '\')">' + _ktop.getImg(logoPath,null,null,null,attr2(_ktop._alt,logoTip)+_ktop.attr("id","branding")+_ktop.attr("name","branding")) + '</A>'
+	}
+	
+	if ( s!="") s = '<TR valign="top" height="'+logoHeight+'"><TD align="right">' + s + '</TD></TR>'
+
+	return s
+}
+
+//------------------------------------------------------------------------------
+function BrandingBannerHTML() {
+//------------------------------------------------------------------------------
+var s=''
+var bannerPath="",bannerClick="",bannerTip,bannerHeight
+var brd=_ktop._dyn?_ktop.parent._BrandingImages:_ktop._BrandingImages
+
+	if (brd!=_NULL) {
+
+		var desc=brd['tocbanner1']
+
+		if (desc) {
+			bannerPath=_ktop.brandingUrl(desc,"AuthorLogo");
+			bannerClick=_ktop.brandingClickUrl(desc,"AuthorLogo");
+			bannerTip=desc.ToolTip
+			bannerHeight=desc.Height
+		}
+	}
+	else with (book) {
+		bannerPath=branding.tocPath;logoClick=branding.tocUrl;logoTip=branding.tocTip;bannerHeight=branding.tocHeight
+	}
+
+	if (bannerPath&&bannerPath!=""&&(!_ktop._preloadPage&&!_ktop._searchPage)) {
+		s+= '<A href="javascript:_ktop.goToWebViaImage(\''+ bannerClick + '\')">' + _ktop.getImg(bannerPath,null,null,null,attr2(_ktop._alt,bannerTip)+_ktop.attr("id","branding")+_ktop.attr("name","branding")) + '</A>'
+	}
+	
+	if ( s!="") s = '<TR height=' + bannerHeight + '><TD align="center">' + s + '</TD></TR>'
+
+	return s
+}
+
+//------------------------------------------------------------------------------
+function AuthorTitle() {
+//------------------------------------------------------------------------------
+	var s=''
+	if (book.title!=null && book.title!="") {
+		s+='<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>'
+			s+='<TR valign=middle>'
+			s+='<TD align=center class=title>' + book.title + '</nobr></TD>'
+			s+='</TR>'
+		s+='</TABLE>'
+	}	
+	if(s!="") s='<TR><TD valign="middle" align="center">' + s + '</TD></TR>'
+	return s
+}
+
+//------------------------------------------------------------------------------
+function AuthorImage() {
+//------------------------------------------------------------------------------
+	var w=photoW,h=photoH
+	imgW = winWidth()-20
+	imgH = winHeight()-20-contentH
+	if ( photoW>=imgW )
+	{
+		h = photoH*imgW/photoW
+		w = imgW
+		
+		if ( h>=imgH )
+		{
+			w = w*imgH/h
+			h = imgH
+		}
+	}
+	else
+	{
+		if ( photoH>=imgH )
+		{
+			w = photoW*imgH/photoH
+			h = imgH
+		}
+	}
+	var s=''
+	with(book.author)
+		if (photo!=_NULL) s+=_ktop.getImg(photo,w,h,"center",attr2(_ktop._alt,tip)+_ktop.attr("id","photo")+_ktop.attr("name","photo"))
+	if (s!="") s = '<TR><TD valign="middle" align="center">' + s + '</TD></TR>'
+	return s
+}
+
+//------------------------------------------------------------------------------
+function AuthorEmail() {
+//------------------------------------------------------------------------------
+var s=''
+var mail=book.author.email
+var name=book.author.name
+	
+	if (name=="Unknown"&&mail=="") return s;
+	
+	if (name=="Unknown") name=mail
+	
+	s+='<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>'
+	s+='<TR>'
+		s+='<TD align=center class=Author>' + _lab.authorAuthor + '&nbsp'
+	if (mail!=null&&mail!="")
+		s+='<A HREF="mailto:' + mail + '">' + name + '</A></nobr></TD>'
+	else
+		s+=name
+	s+='</TR>'
+	s+='</TABLE>'
+	if( s!="") s = '<TR><TD valign="middle" align="center">' + s + '</TD></TR>'
+	return s
+}
+
+function AuthorPage( event, noImage )
+{
+	var Inner = '';
+	if(noImage || arguments.length == 0)
+		Inner+='<TABLE cellspacing=0 cellpadding=0 width="'+(winWidth()-20)+'" align=center border=0>' 
+	else
+	{
+		photoW = photo.width
+		photoH = photo.height
+		Inner+='<TABLE cellspacing=0 cellpadding=0 width="'+(winWidth()-20)+'" height="'+(winHeight()-20)+'" align=center border=0>'
+	}
+	
+	//LOGO
+	Inner+=BrandingLogoHTML()
+	
+	Inner+='<tr valign="middle"><td align="center"><TABLE cellSpacing=0 cellPadding=5 border=0>'
+			
+	// TITLE
+	Inner+=AuthorTitle(book.title, "Title")
+	
+	// AUTHOR IMAGE
+	if(!noImage) Inner+=AuthorImage()
+	
+	// AUTHOR EMAIL
+	Inner+=AuthorEmail()
+
+	Inner+='</table></td></tr>';
+
+	//BANNER
+	Inner+=BrandingBannerHTML()
+
+	Inner+='</table>'
+	
+	reWriteLayer(Inner,"content")
+	if(!noImage) showLayer(true,"content")
+}
+
+function layerWidth( id, frm )
+{
+	var el=layerElem(id)
+	if (el==_NULL) 
+		return false;
+			
+	if (_ie||_moz) return el.offsetWidth
+	if (_ns) return el.clip.width
+	return 0
+}
+
+function layerHeight( id, frm )
+{
+	var el=layerElem(id)
+	if (el==_NULL) 
+		return false;
+	
+	if (_ie||_moz) return el.offsetHeight
+	if (_ns) return el.clip.height
+	return 0
+}
+
+function loadCB()
+{
+	if (book.author.photo!=_NULL)
+	{
+		AuthorPage(null, true);
+		
+		contentH = layerHeight("content")
+		
+		photo=new Image;
+		photo.onload = AuthorPage;
+		photo.src=book.author.photo;
+	}
+	else
+		AuthorPage(null, true);
+}
+
+if(!_ns4) window.onresize = AuthorPage
+</SCRIPT>
+<style type="text/css">
+#content{ position:absolute;visibility:hidden; }
+</style>
+</HEAD>
+
+<BODY onload="loadCB()">
+
+<span id="content"></span>
+
+</BODY>
+</HTML>
+

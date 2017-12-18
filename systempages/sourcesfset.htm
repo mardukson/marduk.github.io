@@ -1,0 +1,33 @@
+<!--
+Copyright (c) 1997-2002, KeeBoo Corporation. All rights reserved.
+Copyright application on progress at the Copyright Office.
+This source code is the property of KeeBoo Corporation,
+it cannot be reused, modified or published without prior 
+written consent from KeeBoo Corporation.
+KeeBoo and the KeeBoo logo are trademarks or registered
+trademarks of KeeBoo Corporation.
+-->
+
+<HTML>
+<head>
+<script src="../common/top.js" language="javascript"></script>
+<script language="javascript">
+var val = 50;
+var qualifier = "common";
+if ( (typeof(_ktop.parent.GeneratorQualifier) == "string") )
+	qualifier = _ktop.parent.GeneratorQualifier.toLowerCase()
+else if ( _ktop._dyn )
+	qualifier = "generator";
+	
+if ( qualifier == "pro" || qualifier == "generator" )
+	val = 33;
+	
+s=""
+s+="<FRAMESET rows='*," + val + "%' border=0 frameborder=no framespacing=0>"
+s+="<FRAME name='sources' SRC='sources.htm' frameborder=no border=0 noresize>"
+s+="<FRAME name='private' SRC='private.htm' frameborder=no border=0 noresize>"
+s+="</FRAMESET>"
+document.write(s)
+</script>
+
+</HTML>
